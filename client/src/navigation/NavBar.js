@@ -8,9 +8,9 @@ function NavBar() {
   <Navbar bg="light" expand="lg" style={{marginBottom:"20px"}}>
   <Container>
     <Navbar.Brand ><img src={logo} style={{width:"15rem"}} alt="Logo"></img></Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Toggle aria-controls="basic-navbar-nav"  className="order-md-1 order-0"/>
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
+      <Nav className="justify-content-end" style={{ width: "100%" }}>
         <Nav.Link >Home</Nav.Link>
         <Nav.Link >Link</Nav.Link>
         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
