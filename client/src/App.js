@@ -7,15 +7,16 @@ import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 import Image from './pages/Image.js'
 
+
 function App() {
   return (
     <div className="App">
     <BrowserRouter>
-      <Dashboard></Dashboard>
       <Image></Image>
       <Routes>
         <Route path='/homepage' element={<HomePage />} />
-        <Route path='/qrcode' element={<Qr_code_page />} />   
+        <Route path='/qrcode' element={<Qr_code_page />} /> 
+        <Route path='/' element={<Dashboard></Dashboard>} />
       </Routes>
     </BrowserRouter>
     </div>

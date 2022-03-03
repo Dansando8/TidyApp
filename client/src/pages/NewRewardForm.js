@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import moment from 'moment'
+import apiService from '../apiService.js'
 
 const timeNow = moment(Date.now()).format("YYYY-MM-DDTkk:mm"); 
 
 const initialState = {
   reward : '', 
   points:'', 
-  imageUrl: '',
-  imageAlt: '',  
+  imageUrl: '', 
   date: timeNow
 }
 function NewRewardForm() {
@@ -24,11 +24,27 @@ function NewRewardForm() {
       }));
     };
 
+    const handleSubmit = async (e) => {
+    
+      console.log('inside handlesubmit')
+      e.preventDefault()
+
+      const newReward = {
+        reward: state.reward,
+        points: state.points,
+        imageUrl: state.imageUrl,
+        date: state.date
+      }
+
+      await apiService.addNewReward(newReward); 
+      console.log('after Api call')
+      setState(initialState); 
+    }
 
   return (
     <div>
-<Form>
-  <Form.Group   className="mb-3" controlId="formBasicEmail" >
+<Form onSubmit={handleSubmit}>
+  <Form.Group  className="mb-3" controlId="formBasicEmail">
     <Form.Label>Reward name</Form.Label>
     <Form.Control name="reward" type="text" placeholder="Reward name" value ={state.reward} onChange={handleChange} />
   </Form.Group>
@@ -48,11 +64,10 @@ function NewRewardForm() {
     <Form.Control name="date" type='datetime-local' className ='custom-file-label' value ={state.date} onChange={handleChange}></Form.Control>
   </Form.Group>
 
-  <Button variant="primary" type="submit">
+  <Button variant="primary" type="submit" >
     Submit
   </Button>
 </Form>
-
     </div>
   )
 }
