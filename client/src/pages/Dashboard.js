@@ -22,7 +22,9 @@ console.log(rewards, " after useEff");
 
   return (
     <div>
+    <div>
      <NewRewardForm></NewRewardForm>
+     </div>
      <div>
       <Rewards rewards={rewards}></Rewards>
       </div>

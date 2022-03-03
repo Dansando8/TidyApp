@@ -5,11 +5,14 @@ import  {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Qr_code_page from './pages/Qr_code_page';
 import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
+import NavBar from './navigation/NavBar';
+
 
 
 function App() {
   return (
     <div className="App">
+    <NavBar></NavBar>
     <BrowserRouter>
       <Routes>
         <Route path='/homepage' element={<HomePage />} />

@@ -44,6 +44,7 @@ function NewRewardForm() {
     }
 
   return (
+    
     <div>
 <Form onSubmit={handleSubmit}>
   <Form.Group  className="mb-3" controlId="formBasicEmail">
@@ -66,11 +67,12 @@ function NewRewardForm() {
     <Form.Control name="date" type='datetime-local' className ='custom-file-label' value ={state.date} onChange={handleChange}></Form.Control>
   </Form.Group>
 
-  <Button variant="primary" type="submit" >
+  <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
     Submit
   </Button>
 </Form>
-    </div>
+  </div>
+    
   )
 }
 
