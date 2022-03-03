@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomePage() {
   return (
-    <div>This is the Qrcode page </div>
+    <div>Yeahhh my app started to work 🥳</div>
   )
 }
 
