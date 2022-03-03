@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/homepage' element={<HomePage />} />
         <Route path='/qrcode' element={<Qr_code_page />} /> 
-        <Route path='/' element={<Dashboard></Dashboard>} />
+        <Route path='/dashboard' element={<Dashboard></Dashboard>} />
       </Routes>
     </BrowserRouter>
     </div>
