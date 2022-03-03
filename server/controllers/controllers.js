@@ -8,10 +8,20 @@ const postReward = async (req, res) => {
     res.status(200)
   } catch (error) {
     console.log(error);
-    res.send(error);
+    res.send(error).status(500);
+  }
+}
+
+const findRewards = async (req, res) => {
+  try {
+    const rewards = await Reward.find({}); 
+    res.send(rewards).status(200)
+  } catch (error) {
+    console.log(error)
+    res.send(error).status(500)
   }
 }
 
 
 
-module.exports = { postReward }
+module.exports = { postReward, findRewards }

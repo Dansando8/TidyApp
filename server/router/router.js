@@ -1,7 +1,9 @@
 const Express = require('express'); 
 const router = Express.Router(); 
-const { postReward } = require('../controllers/controllers.js')
+const { postReward, findRewards } = require('../controllers/controllers.js')
 
 router.post('/rewards', postReward); 
+
+router.get('/rewards', findRewards);
 
 module.exports = router; 

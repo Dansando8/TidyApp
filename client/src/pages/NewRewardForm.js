@@ -15,7 +15,7 @@ const initialState = {
 function NewRewardForm() {
 
     const [state, setState] = useState(initialState);
-
+  
     const handleChange = (e) => {
       const { name, value } = e.target;
       setState((prevState) => ({
@@ -26,18 +26,20 @@ function NewRewardForm() {
 
     const handleSubmit = async (e) => {
     
-      console.log('inside handlesubmit')
+      console.log('inside handlesubmit', e.target)
+      
       e.preventDefault()
 
+      const files = document.querySelector('input[name="imageUrl"]').files
+      const imageUrl = await apiService.uploadImage(files); 
+  
       const newReward = {
         reward: state.reward,
         points: state.points,
-        imageUrl: state.imageUrl,
+        imageUrl: imageUrl,
         date: state.date
       }
-
       await apiService.addNewReward(newReward); 
-      console.log('after Api call')
       setState(initialState); 
     }
 

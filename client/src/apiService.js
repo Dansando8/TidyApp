@@ -11,4 +11,22 @@ apiService.addNewReward = async (newReward) => {
   return await res.json(); 
 }
 
+apiService.uploadImage = async (files) => {
+  const data =  new FormData()
+  data.append('file', files[0])
+  data.append('upload_preset', 'tiddyappimages')
+  const res = await fetch('https://api.Cloudinary.com/v1_1/dqdzczpoi/image/upload', {
+    method:'POST', 
+    body: data 
+  })
+  const file = await res.json();
+  return file.secure_url
+}
+
+apiService.getRewards = async () => {
+  const data = await fetch(`http://localhost:3030/rewards`)
+  const rewardsData = await data.json()
+  console.log(rewardsData)
+}
+
 export default apiService; 
