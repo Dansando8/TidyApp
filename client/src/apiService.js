@@ -24,9 +24,8 @@ apiService.uploadImage = async (files) => {
 }
 
 apiService.getRewards = async () => {
-  const data = await fetch(`http://localhost:3030/rewards`)
-  const rewardsData = await data.json()
-  console.log(rewardsData)
+  const data = await fetch(`${BASE_URL}/rewards`)
+  return await data.json()
 }
 
 export default apiService; 
