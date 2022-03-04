@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 import NavBar from './navigation/NavBar';
 import Reward from './pages/Reward';
+import Tasks from './pages/Tasks';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/qrcode' element={<Qr_code_page />} /> 
         <Route path='/dashboard' element={<Dashboard></Dashboard>} />
         <Route path='/reward/:id' element={<Reward></Reward>}></Route>
+        <Route path='/tasks' element={<Tasks></Tasks>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

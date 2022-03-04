@@ -49,17 +49,17 @@ function NewRewardForm() {
 <Form onSubmit={handleSubmit}>
   <Form.Group  className="mb-3" controlId="formBasicEmail">
     <Form.Label>Reward name</Form.Label>
-    <Form.Control name="reward" type="text" placeholder="Reward name 35 characters max" maxLength="35" value ={state.reward} onChange={handleChange} />
+    <Form.Control  name="reward" type="text" placeholder="Reward name 35 characters max" maxLength="35" value ={state.reward} onChange={handleChange} />
   </Form.Group>
 
-  <Form.Group className="mb-3" controlId="formBasicPassword">
+  <Form.Group  className="mb-3" controlId="formBasicPassword">
   <Form.Label>Reward points</Form.Label>  
-    <Form.Control name="points" type="number"  placeholder="Reward points" value ={state.points} onChange={handleChange} />
+    <Form.Control  name="points" type="number"  placeholder="Reward points" value ={state.points} onChange={handleChange} />
   </Form.Group>
   
   <Form.Group>
   <Form.Label>Reward picture</Form.Label>  
-    <Form.Control name="imageUrl" type='file' className ='custom-file-label' value ={state.imageUrl} onChange={handleChange}></Form.Control>
+    <Form.Control  name="imageUrl" type='file' className ='custom-file-label' value ={state.imageUrl} onChange={handleChange}></Form.Control>
   </Form.Group>
 
   <Form.Group>
