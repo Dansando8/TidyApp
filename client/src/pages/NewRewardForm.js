@@ -39,7 +39,7 @@ function NewRewardForm() {
         imageUrl: imageUrl,
         date: state.date
       }
-      await apiService.addNewReward(newReward); 
+      await apiService.findAndUpdateRewardByID(newReward); 
       setState(initialState); 
     }
 
@@ -49,7 +49,7 @@ function NewRewardForm() {
 <Form onSubmit={handleSubmit}>
   <Form.Group  className="mb-3" controlId="formBasicEmail">
     <Form.Label>Reward name</Form.Label>
-    <Form.Control name="reward" type="text" placeholder="Reward name" value ={state.reward} onChange={handleChange} />
+    <Form.Control name="reward" type="text" placeholder="Reward name 35 characters max" maxLength="35" value ={state.reward} onChange={handleChange} />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">

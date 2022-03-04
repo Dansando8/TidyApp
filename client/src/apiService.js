@@ -28,4 +28,22 @@ apiService.getRewards = async () => {
   return await data.json()
 }
 
+apiService.fetchRewardById = async (id) => {
+  const data = await fetch(`http://localhost:3030/rewards/${id}`); 
+  const rewardFound = await data.json();
+  return rewardFound; 
+}
+
+apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
+  const data = await fetch(`http://localhost:3030/rewards/${id}`,{
+    headers:{
+      Accept: 'application/json', 
+      'Content-type': 'application/json'
+    }, 
+    method: "PATCH", 
+    body: JSON.stringify(updatedReward)
+  }); 
+  return data.json(); 
+}
+
 export default apiService; 

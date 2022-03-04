@@ -12,7 +12,6 @@ function Dashboard() {
 useEffect(() => {
   const GetRewardList = async() => {
   const rewardList = await apiService.getRewards()
-  console.log(rewardList, "from use Effect"); 
   setRewards(rewardList); 
 }
 GetRewardList();
