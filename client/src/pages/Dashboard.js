@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import NewRewardForm from './NewRewardForm'
 import apiService from '../apiService'
 import Rewards from './Rewards'
-import { Grid, Row, Col  } from 'react-bootstrap'; 
+
 
 
 function Dashboard() {
@@ -18,7 +18,8 @@ useEffect(() => {
 GetRewardList();
 },[])
 
-console.log(rewards, " after useEff"); 
+rewards.sort((a,b)=> a.points - b.points); 
+
 
   return (
     <div>
