@@ -25,8 +25,6 @@ function NewRewardForm() {
     };
 
     const handleSubmit = async (e) => {
-    
-      console.log('inside handlesubmit', e.target)
       
       e.preventDefault()
 

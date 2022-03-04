@@ -1,4 +1,5 @@
 const  Reward = require('../models/RewardSchema.js')
+const Task = require('../models/TaskSchema.js')
 
 //Post one reward 
 
@@ -52,4 +53,21 @@ const findAndUpdateRewardByID = async(req, res) =>  {
   }
 }
 
-module.exports = { postReward, findRewards, findRewardByID, findAndUpdateRewardByID}
+//-----> TASKS <-------//
+
+const postTask = async (req, res) => {
+  try {
+    const result = await Task.create(req.body)
+    res.send(result).status(200)
+  } catch (error) {
+    res.send(error).status(500)
+  }
+}
+
+module.exports = { 
+  postReward, 
+  findRewards, 
+  findRewardByID, 
+  findAndUpdateRewardByID, 
+  postTask
+}

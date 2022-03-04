@@ -1,9 +1,9 @@
 const Express = require('express'); 
 const router = Express.Router(); 
-const { postReward, findRewards, findRewardByID, findAndUpdateRewardByID } = require('../controllers/controllers.js')
+const { postReward, findRewards, findRewardByID, findAndUpdateRewardByID, postTask } = require('../controllers/controllers.js')
 
 
-//Post a new reward
+//Post a new Reward
 
 router.post('/rewards', postReward); 
 
@@ -18,5 +18,12 @@ router.get('/rewards/:rewardId', findRewardByID);
 //Update a reward information
 
 router.patch('/rewards/:rewardId', findAndUpdateRewardByID); 
+
+
+//-----> TASKS <-------//
+
+//Post a new Task 
+
+router.post('/tasks', postTask); 
 
 module.exports = router; 

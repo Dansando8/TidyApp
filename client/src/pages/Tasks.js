@@ -1,8 +1,11 @@
 import React from 'react'
+import TaskForm from './TaskForm'
 
 function Tasks() {
   return (
-    <div>Tasks</div>
+    <div>
+      <TaskForm></TaskForm>
+    </div>
   )
 }
 

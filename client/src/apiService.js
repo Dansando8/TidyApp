@@ -46,4 +46,15 @@ apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
   return data.json(); 
 }
 
+//----> TASKS <-------//
+
+apiService.postTask = async (newTask) => {
+  const res = await fetch(`${BASE_URL}/rewards`, {
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json'}, 
+    body: JSON.stringify(newTask) 
+  });
+  return await res.json(); 
+}
+
 export default apiService; 
