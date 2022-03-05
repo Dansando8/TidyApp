@@ -3,56 +3,76 @@ const BASE_URL = 'http://localhost:3030'
 const apiService = { }; 
 
 apiService.addNewReward = async (newReward) => {
-  console.log('NEW REWARD, ADD NEW REW', newReward)
-  const res = await fetch(`${BASE_URL}/rewards`, {
+  try {
+    console.log('NEW REWARD, ADD NEW REW', newReward)
+    const res = await fetch(`${BASE_URL}/rewards`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newReward) 
   });
-  return res.json(); 
+  return res.json();
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 apiService.uploadImage = async (files) => {
-  const data =  new FormData()
-  data.append('file', files[0])
-  data.append('upload_preset', 'tidyappimages')
-  const res = await fetch('https://api.Cloudinary.com/v1_1/dqdzczpoi/image/upload', {
+
+  try {
+    const data =  new FormData()
+    data.append('file', files[0])
+    data.append('upload_preset', 'tidyappimages')
+    const res = await fetch('https://api.Cloudinary.com/v1_1/dqdzczpoi/image/upload', {
     method:'POST', 
     body: data 
   })
-  const file = await res.json();
-  return file.secure_url
+    const file = await res.json();
+    return file.secure_url
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 apiService.getRewards = async () => {
-  const data = await fetch(`${BASE_URL}/rewards`)
-  return await data.json()
+  try {
+    const data = await fetch(`${BASE_URL}/rewards`)
+    return await data.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 apiService.fetchRewardById = async (id) => {
-  const data = await fetch(`http://localhost:3030/rewards/${id}`); 
-  const rewardFound = await data.json();
-  return rewardFound; 
+  try {
+    const data = await fetch(`http://localhost:3030/rewards/${id}`); 
+    const rewardFound = await data.json();
+    return rewardFound; 
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
+try {
   const data = await fetch(`http://localhost:3030/rewards/${id}`, {
     headers:{
-      Accept: 'application/json', 
-      'Content-type': 'application/json'
+    Accept: 'application/json', 
+    'Content-type': 'application/json'
     }, 
     method: "PATCH", 
     body: JSON.stringify(updatedReward)
   }); 
-  return data.json() 
+  return data.json()
+} catch (error) {
+  console.log(error); 
+}   
 }
 
 apiService.findAndDeleteRewardByID = async(id) => {
-
 try {
   const data = await fetch(`http://localhost:3030/rewards/${id}`, {
     headers: { 
-      'Content-type': 'application/json'
+    'Content-type': 'application/json'
     }, 
     method:'DELETE' 
   }); 
