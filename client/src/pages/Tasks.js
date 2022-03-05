@@ -1,11 +1,14 @@
-import React,{useEffect, useState} from 'react'
-import {Button, Card, ListGroup, Link} from 'react-bootstrap'
+import React from 'react'
+import { Button, Card, ListGroup } from 'react-bootstrap'
+import {FaTrashRestoreAlt} from 'react-icons/fa'
 
 
 
 function Tasks({tasks}) {
 
-console.log(tasks, "from Tasks component"); 
+const handleDelete = async () => {
+  console.log('hey hey hey ')
+}
 
   return (
     <div>
@@ -20,7 +23,7 @@ console.log(tasks, "from Tasks component");
           {/* <ListGroup.Item>ICON HERE</ListGroup.Item> */}
           <ListGroup.Item><h1>{task.taskName}</h1></ListGroup.Item>
           <ListGroup.Item><h1>Points: {task.taskPoints}</h1></ListGroup.Item>
-          <ListGroup.Item><h1>Points: {task.taskPoints}</h1></ListGroup.Item>
+          <ListGroup.Item  ><FaTrashRestoreAlt onClick={handleDelete} /></ListGroup.Item>
         </ListGroup>
           <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}}>Apply points</Button>
       </Card>

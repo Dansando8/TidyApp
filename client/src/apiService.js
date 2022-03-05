@@ -1,10 +1,10 @@
-const BASE_URL = 'http://localhost:3030'
+const BASE_URL = 'http://localhost:3030/'
 
 const apiService = { }; 
 
 apiService.addNewReward = async (newReward) => {
   try {
-    const res = await fetch(`${BASE_URL}/rewards`, {
+    const res = await fetch(`${BASE_URL}rewards`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newReward) 
@@ -35,7 +35,7 @@ apiService.uploadImage = async (files) => {
 
 apiService.getRewards = async () => {
   try {
-    const data = await fetch(`${BASE_URL}/rewards`)
+    const data = await fetch(`${BASE_URL}rewards`)
     return await data.json()
   } catch (error) {
     console.log(error)
@@ -44,7 +44,7 @@ apiService.getRewards = async () => {
 
 apiService.fetchRewardById = async (id) => {
   try {
-    const data = await fetch(`http://localhost:3030/rewards/${id}`); 
+    const data = await fetch(`${BASE_URL}rewards/${id}`); 
     const rewardFound = await data.json();
     return rewardFound; 
   } catch (error) {
@@ -54,7 +54,7 @@ apiService.fetchRewardById = async (id) => {
 
 apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
 try {
-  const data = await fetch(`http://localhost:3030/rewards/${id}`, {
+  const data = await fetch(`${BASE_URL}rewards/${id}`, {
     headers:{
     Accept: 'application/json', 
     'Content-type': 'application/json'
@@ -70,7 +70,7 @@ try {
 
 apiService.findAndDeleteRewardByID = async(id) => {
 try {
-  const data = await fetch(`http://localhost:3030/rewards/${id}`, {
+  const data = await fetch(`${BASE_URL}rewards/${id}`, {
     headers: { 
     'Content-type': 'application/json'
     }, 
@@ -85,7 +85,7 @@ try {
 //----> TASKS <-------//
 
 apiService.postTask = async (newTask) => {
-  const res = await fetch(`${BASE_URL}/tasks`, {
+  const res = await fetch(`${BASE_URL}tasks`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newTask) 
@@ -96,11 +96,27 @@ apiService.postTask = async (newTask) => {
 
 apiService.findTasks = async() => {
   try {
-    const data = await fetch(`${BASE_URL}/tasks`)
+    const data = await fetch(`${BASE_URL}tasks`)
     return await data.json(); 
   } catch (error) {
     console.log(error)
   }
 }
+
+//Delete task using ID
+
+apiService.findAndDeleteTaskByID = async(id) => {
+  try {
+    const data = await fetch(`${BASE_URL}tasks/${id}`, {
+      headers: { 
+      'Content-type': 'application/json'
+      }, 
+      method:'DELETE' 
+    }); 
+    return data.json()
+  } catch (error) {
+    console.log(error); 
+  }
+  }
 
 export default apiService; 

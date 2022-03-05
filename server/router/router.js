@@ -7,7 +7,8 @@ const {
   findAndUpdateRewardByID, 
   findAndDeleteRewardByID, 
   postTask,
-  findTasks, 
+  findTasks,
+  findAndDeleteTaskByID, 
 } = require('../controllers/controllers.js')
 
 
@@ -40,5 +41,9 @@ router.post('/tasks', postTask);
 //Find Tasks
 
 router.get('/tasks', findTasks); 
+
+//Delete Task by ID
+
+router.delete('/tasks/:taskId', findAndDeleteTaskByID);
 
 module.exports = router; 

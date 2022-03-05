@@ -88,6 +88,18 @@ const findTasks = async (req, res) => {
   }
 }
 
+//Delete a task
+
+const findAndDeleteTaskByID = async(req, res) => {
+  try {
+    const {taskId} = req.params
+    const task = await Task.findByIdAndDelete(taskId)
+    if(!task) res.status(404). send('No reward found')
+    res.send(task).status(200)
+  } catch (error) {
+    res.send(error).status(500)
+  }
+}
 
 module.exports = { 
   postReward, 
@@ -96,5 +108,6 @@ module.exports = {
   findAndUpdateRewardByID,
   findAndDeleteRewardByID, 
   postTask, 
-  findTasks
+  findTasks, 
+  findAndDeleteTaskByID,
 }
