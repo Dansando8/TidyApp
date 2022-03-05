@@ -85,7 +85,6 @@ function Reward( ) {
           <Card.Title style={{ marginTop:'10px' }} ><h1>{state.reward}</h1></Card.Title>
           <Card.Text style={{ marginTop:'0px' }}>{moment(state.date).format("YYYY-MM-DD-kk:mm")}</Card.Text>
           <Card.Text style={{ margin:'0px' }}>POINTS : {state.points}</Card.Text>
-        
         </Card.Body>
     </Card>
   </div>

@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import NavBar from './navigation/NavBar';
 import Reward from './pages/Reward';
 import Tasks from './pages/Tasks';
+import Task from './pages/Task'
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard></Dashboard>} />
         <Route path='/reward/:id' element={<Reward></Reward>}></Route>
         <Route path='/tasks' element={<Tasks></Tasks>}></Route>
+        <Route path='/tasks/:id' element={<Task></Task>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

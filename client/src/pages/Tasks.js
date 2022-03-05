@@ -1,23 +1,11 @@
 import React from 'react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import {FaTrashRestoreAlt} from 'react-icons/fa'
-import apiService from '../apiService'
-import { useParams } from 'react-router-dom'
-
 
 
 function Tasks({tasks}) {
 
-const { id } = useParams()
-console.log(id, 'Id from Tasks')
-
-const handleDelete = async () => {
-  try {
-    await apiService.findAndDeleteTaskByID(); 
-  } catch (error) {
-    console.log(error)
-  }
-}
 
   return (
     <div>
@@ -31,7 +19,10 @@ const handleDelete = async () => {
         <ListGroup variant="flush">
           <ListGroup.Item><h1>{task.taskName}</h1></ListGroup.Item>
           <ListGroup.Item><h1>Points: {task.taskPoints}</h1></ListGroup.Item>
-          <ListGroup.Item  ><FaTrashRestoreAlt onClick={handleDelete({key})} /></ListGroup.Item>
+          <LinkContainer to={`/tasks/${task._id}`}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
+                <ListGroup.Item ><FaTrashRestoreAlt/></ListGroup.Item>
+          </LinkContainer>
+         
         </ListGroup>
           <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}}>Apply points</Button>
       </Card>

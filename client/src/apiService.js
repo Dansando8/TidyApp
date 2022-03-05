@@ -94,10 +94,26 @@ apiService.postTask = async (newTask) => {
   return data; 
 }
 
-apiService.findTasks = async() => {
+//Find all tasks
+apiService.findTasks = async(id) => {
   try {
     const data = await fetch(`${BASE_URL}tasks`)
+    
     return await data.json(); 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+//Find Task using ID
+
+apiService.findTaskById = async(id) => {
+  try {
+    const data = await fetch(`${BASE_URL}tasks/${id}`); 
+    
+    const taskFound = await data.json();
+    console.log(taskFound, "task found")
+    return taskFound; 
   } catch (error) {
     console.log(error)
   }
@@ -107,16 +123,19 @@ apiService.findTasks = async() => {
 
 apiService.findAndDeleteTaskByID = async(id) => {
   try {
+    
     const data = await fetch(`${BASE_URL}tasks/${id}`, {
       headers: { 
       'Content-type': 'application/json'
       }, 
       method:'DELETE' 
     }); 
+    console.log(id, "data found")
     return data.json()
   } catch (error) {
     console.log(error); 
   }
   }
+
 
 export default apiService; 
