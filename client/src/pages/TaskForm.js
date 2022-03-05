@@ -41,7 +41,7 @@ function TaskForm() {
         <Form.Control name="taskName" type='text' maxLength="35" value={state.taskName} style={{marginLeft:'10px'}} onChange={handleChange} /> 
         <Form.Label>Points</Form.Label>
         <Form.Control  name="taskPoints" type='number' value={state.taskPoints} style={{marginLeft:'10px'}} onChange={handleChange} /> 
-        <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px' }} onClick={handleSubmit}>UPDATE</Button>
+        <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px' }} onClick={handleSubmit}>NEW TASK</Button>
       </Form.Group>
     </Form>
     </div>

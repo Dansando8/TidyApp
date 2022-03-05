@@ -40,7 +40,7 @@ useEffect(() =>{
   }
   GetTaskList(); 
 },[])
-console.log(tasks)
+console.log(tasks, 'From Dashboard')
 
 //Sorting rewards and tasks by poins
 rewards.sort((a,b)=> a.points - b.points); 
@@ -54,7 +54,7 @@ rewards.sort((a,b)=> a.points - b.points);
      </div>
      <div>
       <Rewards rewards={rewards} ></Rewards>
-      <Tasks ></Tasks>
+      <Tasks tasks={tasks}></Tasks>
       </div>
     </div>
   )

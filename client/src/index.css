@@ -8,8 +8,15 @@ body{
 .reward-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow: scroll;
+  width: 100vw;
+  
+}
+
+.tasks-container{
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
   width: 100vw;
 }
 
