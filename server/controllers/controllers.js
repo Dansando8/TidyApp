@@ -6,8 +6,7 @@ const Task = require('../models/TaskSchema.js')
 const postReward = async (req, res) => {
   try {
     const result = await Reward.create(req.body); 
-    res.send(result); 
-    res.status(200)
+    res.send(result).status(200)
   } catch (error) {
     console.log(error);
     res.send(error).status(500);
@@ -44,12 +43,23 @@ const findRewardByID = async(req, res) =>  {
 const findAndUpdateRewardByID = async(req, res) =>  {
   try {
     const { rewardId } = req.params
-    console.log(rewardId, ' reward id')
     const reward = await Reward.findOneAndUpdate({_id: rewardId}, req.body)
     res.send(reward)
   } catch (error) {
     res.send(error).status(500)
     console.log(error)
+  }
+}
+
+//Delete Reward
+
+const findAndDeleteRewardByID = async(req, res) => {
+  try {
+    const { rewardId } = req.params
+    const deleteReward = await Reward.findByIdAndDelete(rewardId)
+    res.send(deleteReward).status(200)
+  } catch (error) {
+    res.send(error).status(500)
   }
 }
 
@@ -68,6 +78,7 @@ module.exports = {
   postReward, 
   findRewards, 
   findRewardByID, 
-  findAndUpdateRewardByID, 
+  findAndUpdateRewardByID,
+  findAndDeleteRewardByID, 
   postTask
 }

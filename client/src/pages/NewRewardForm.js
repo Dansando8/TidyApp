@@ -37,12 +37,12 @@ function NewRewardForm() {
         imageUrl: imageUrl,
         date: state.date
       }
-      await apiService.findAndUpdateRewardByID(newReward); 
+      await apiService.addNewReward(newReward); 
       setState(initialState); 
     }
 
   return (
-  //Test
+    
     <div>
 <Form onSubmit={handleSubmit}>
   <Form.Group  className="mb-3" controlId="formBasicEmail">

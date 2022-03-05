@@ -15,10 +15,9 @@ const rewardSchema = mongoose.Schema({
     required:true
   },  
   date: { 
-    type: Date, 
+    type: String, 
     required: true
   }
 }); 
 
 module.exports = mongoose.model('Reward', rewardSchema); 
- 

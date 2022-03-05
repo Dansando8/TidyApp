@@ -10,7 +10,6 @@ const router = require('./router/router.js');
 
 const PORT = 3030; 
 app.use(cors()); 
-
 app.use(Express.json())
 app.use(router);
 

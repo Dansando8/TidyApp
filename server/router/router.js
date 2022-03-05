@@ -1,6 +1,13 @@
 const Express = require('express'); 
 const router = Express.Router(); 
-const { postReward, findRewards, findRewardByID, findAndUpdateRewardByID, postTask } = require('../controllers/controllers.js')
+const { 
+  postReward, 
+  findRewards, 
+  findRewardByID, 
+  findAndUpdateRewardByID, 
+  findAndDeleteRewardByID, 
+  postTask, 
+} = require('../controllers/controllers.js')
 
 
 //Post a new Reward
@@ -19,6 +26,9 @@ router.get('/rewards/:rewardId', findRewardByID);
 
 router.patch('/rewards/:rewardId', findAndUpdateRewardByID); 
 
+//Delete a reward using Id
+
+router.delete('/rewards/:rewardId', findAndDeleteRewardByID)
 
 //-----> TASKS <-------//
 
