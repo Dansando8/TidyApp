@@ -67,15 +67,11 @@ function Reward( ) {
   }
 
   const handleDelete =  async () => {
-
     try {
-      console.log('anything')
       await apiService.findAndDeleteRewardByID(id);
-      console.log(id)
     } catch (error) {
       console.log(error); 
     }
-    
     navigate('/dashboard')
   }
   
