@@ -66,6 +66,8 @@ const findAndDeleteRewardByID = async(req, res) => {
 
 //-----> TASKS <-------//
 
+//Publish a new Task
+
 const postTask = async (req, res) => {
   try {
     const result = await Task.create(req.body)
@@ -75,11 +77,24 @@ const postTask = async (req, res) => {
   }
 }
 
+//Retrieve all tasks
+
+const findTasks = async (req, res) => {
+  try {
+    const result = await Task.find({})
+    res.send(result).status(200) 
+  } catch (error) {
+    res.send(error).status(500)
+  }
+}
+
+
 module.exports = { 
   postReward, 
   findRewards, 
   findRewardByID, 
   findAndUpdateRewardByID,
   findAndDeleteRewardByID, 
-  postTask
+  postTask, 
+  findTasks
 }

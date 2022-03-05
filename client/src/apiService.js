@@ -93,4 +93,13 @@ apiService.postTask = async (newTask) => {
   return await res.json(); 
 }
 
+apiService.findTasks = async() => {
+  try {
+    const data = await fetch(`${BASE_URL}/tasks`)
+    return await data.json(); 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default apiService; 
