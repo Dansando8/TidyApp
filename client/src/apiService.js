@@ -4,14 +4,12 @@ const apiService = { };
 
 apiService.addNewReward = async (newReward) => {
   try {
-    console.log('NEW REWARD, ADD NEW REW', newReward)
     const res = await fetch(`${BASE_URL}/rewards`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newReward) 
   });
   const data = await res.json();
-  console.log(data, 'DATA')
   return data;
   } catch (error) {
     console.log(error)
@@ -92,7 +90,8 @@ apiService.postTask = async (newTask) => {
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newTask) 
   });
-  return await res.json(); 
+  const data = await res.json();
+  return data; 
 }
 
 apiService.findTasks = async() => {

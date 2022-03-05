@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import apiService from '../apiService';
 
 
-function TaskForm() {
+function TaskForm({updateTasks}) {
 
   const initialState = {
     taskName: '', 
@@ -21,14 +21,16 @@ function TaskForm() {
     }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); 
 
     const newTask = {
       taskName: state.taskName, 
       taskPoints: state.taskPoints, 
     }
-      apiService.postTask(newTask)
+    const savedTask = await apiService.postTask(newTask)
+    console.log(savedTask, 'SAVED TASK')
+      updateTasks(savedTask)
       setState(initialState); 
   }
   
