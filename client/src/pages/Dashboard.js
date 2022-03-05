@@ -7,27 +7,26 @@ import Tasks from './Tasks'
 
 
 function Dashboard() {
+  
+  const[rewards, setRewards] = useState([])
+  console.log(rewards, " REWARDS")
 
-const[rewards, setRewards] = useState([])
-console.log(rewards, " REWARDS")
-//Update rewards from the NewReward form component 
-const updateRewards = (newReward) => {
-  console.log("Updated rewards")
-  setRewards([newReward, ...rewards])
-}
-// useEffect(() => {
-//  updateRewards()
-//  .then(rewards => setRewards(rewards))
-// }, [rewards])
+  //Update rewards from the NewReward form component
 
+  const updateRewards = (savedReward) => {
+    console.log("Updated rewards")
+    setRewards([savedReward, ...rewards])
+  }
+  
 //Get reward list from the database
 useEffect(() => {
   const GetRewardList = async() => {
-  const rewardList = await apiService.getRewards()
-  setRewards(rewardList); 
-}
-GetRewardList();
+    const rewardList = await apiService.getRewards()
+    setRewards(rewardList); 
+  }
+  GetRewardList();
 },[])
+
 
 
 //Get Task list from the database 
@@ -51,10 +50,10 @@ rewards.sort((a,b)=> a.points - b.points);
   return (
     <div>
     <div>
-     <NewRewardForm></NewRewardForm>
+     <NewRewardForm updateRewards={updateRewards}></NewRewardForm>
      </div>
      <div>
-      <Rewards rewards={rewards} updateRewards={updateRewards}></Rewards>
+      <Rewards rewards={rewards} ></Rewards>
       <Tasks ></Tasks>
       </div>
     </div>

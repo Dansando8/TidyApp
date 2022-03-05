@@ -37,9 +37,10 @@ function NewRewardForm({updateRewards}) {
         imageUrl: imageUrl,
         date: state.date
       }
-      const savedReward = await apiService.addNewReward(newReward); 
-      console("post completed")
-      updateRewards(savedReward);
+      console.log('before posting')
+      const savedReward = await apiService.addNewReward(newReward)
+      console.log(updateRewards)
+      updateRewards(savedReward)
       setState(initialState); 
     }
 
