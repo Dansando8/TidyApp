@@ -5,11 +5,6 @@ function Tasks() {
 
 const[state, setState] = useState({})
 
-useEffect(() => {
-  
-
-}, [])
-
 
   return (
     <div>

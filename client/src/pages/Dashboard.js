@@ -23,11 +23,15 @@ GetRewardList();
 
 const [tasks, setTasks] = useState({})
 
-useEffect(async () =>{
+useEffect(() =>{
   const GetTaskList = async() => {
-
+   const taskList = await apiService.findTasks()
+   setTasks(taskList)
   }
-})
+  GetTaskList(); 
+},[])
+
+console.log(tasks); 
 
 rewards.sort((a,b)=> a.points - b.points); 
 
@@ -39,7 +43,7 @@ rewards.sort((a,b)=> a.points - b.points);
      </div>
      <div>
       <Rewards rewards={rewards}></Rewards>
-      <Tasks></Tasks>
+      <Tasks tasks={tasks}></Tasks>
       </div>
     </div>
   )
