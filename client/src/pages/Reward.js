@@ -4,8 +4,11 @@ import apiService from '../apiService'
 import { Card, Button, ProgressBar, Form, Alert}from 'react-bootstrap'
 import moment from 'moment'
 import {LinkContainer} from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 function Reward( ) {
+
+  const navigate = useNavigate()
 
   const resetReward = {
     reward : '', 
@@ -18,7 +21,6 @@ function Reward( ) {
   const [updated, setUpdated] = useState(false); 
 
   const {id} = useParams()
-  console.log(id)
 
   useEffect(() => {
     apiService.fetchRewardById(id)
@@ -64,10 +66,17 @@ function Reward( ) {
     setState(updatedInfo)
   }
 
-  const handleDelete =  async (id) => {
+  const handleDelete =  async () => {
 
-    //apiService here 
-
+    try {
+      console.log('anything')
+      await apiService.findAndDeleteRewardByID(id);
+      console.log(id)
+    } catch (error) {
+      console.log(error); 
+    }
+    
+    navigate('/dashboard')
   }
   
   return (
@@ -106,8 +115,8 @@ function Reward( ) {
         <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px'}} onClick={handleSubmit}>UPDATE</Button>
       </Form.Group>
     </Form>
-    
-      <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px'}} onClick={handleDelete}>DELETE REWARD</Button> 
+
+      <Button variant="primary"  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px'}} onClick={handleDelete}>DELETE REWARD</Button> 
 
     
     <LinkContainer to={`/dashboard`} style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>

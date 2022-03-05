@@ -55,9 +55,10 @@ const findAndUpdateRewardByID = async(req, res) =>  {
 
 const findAndDeleteRewardByID = async(req, res) => {
   try {
-    const { rewardId } = req.params
-    const deleteReward = await Reward.findByIdAndDelete(rewardId)
-    res.send(deleteReward).status(200)
+    const {rewardId} = req.params
+    const reward = await Reward.findByIdAndDelete(rewardId)
+    if(!reward) res.status(404). send('No reward found')
+    res.send(reward).status(200)
   } catch (error) {
     res.send(error).status(500)
   }

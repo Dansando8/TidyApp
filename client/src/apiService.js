@@ -44,19 +44,22 @@ apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
     method: "PATCH", 
     body: JSON.stringify(updatedReward)
   }); 
-  return data.json(); 
+  return data.json() 
 }
 
 apiService.findAndDeleteRewardByID = async(id) => {
+
+try {
   const data = await fetch(`http://localhost:3030/rewards/${id}`, {
-    headers: {
-    Accept: 'application/json', 
-    'Content-Type': 'application/json'
-  },
-  method:'DELETE', 
-  }
-  )
-  return
+    headers: { 
+      'Content-type': 'application/json'
+    }, 
+    method:'DELETE' 
+  }); 
+  return data.json()
+} catch (error) {
+  console.log(error); 
+}
 }
 
 //----> TASKS <-------//
