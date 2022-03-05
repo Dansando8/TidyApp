@@ -1,9 +1,16 @@
 import React,{useEffect, useState} from 'react'
 import TaskForm from './TaskForm'
 
-function Tasks() {
+
+function Tasks({tasks}) {
 
 const[state, setState] = useState({})
+
+useEffect(() => {
+ 
+  
+
+}, [])
 
 
   return (

@@ -12,7 +12,7 @@ const initialState = {
   imageUrl: '', 
   date: timeNow
 }
-function NewRewardForm() {
+function NewRewardForm({updateRewards}) {
 
     const [state, setState] = useState(initialState);
   
@@ -37,7 +37,9 @@ function NewRewardForm() {
         imageUrl: imageUrl,
         date: state.date
       }
-      await apiService.addNewReward(newReward); 
+      const savedReward = await apiService.addNewReward(newReward); 
+      console("post completed")
+      updateRewards(savedReward);
       setState(initialState); 
     }
 

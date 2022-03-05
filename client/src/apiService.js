@@ -10,7 +10,9 @@ apiService.addNewReward = async (newReward) => {
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newReward) 
   });
-  return res.json();
+  const data = await res.json();
+  console.log(data, 'DATA')
+  return data;
   } catch (error) {
     console.log(error)
   }
