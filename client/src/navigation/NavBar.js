@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
-import logo from '../assets/tiddyapp-logo.png'
+import logo from '../assets/logo.png'
 
 function NavBar() {
   return (

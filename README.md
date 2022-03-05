@@ -1,2 +1,2 @@
-# TiddyApp
+# TidyApp
 Senior Project / CodeWorks 

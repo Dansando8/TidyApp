@@ -60,9 +60,13 @@ function Reward( ) {
       imageUrl: imageUrl,
       date: state.date
     }
-
     await apiService.findAndUpdateRewardByID(id, updatedInfo); 
     setState(updatedInfo)
+  }
+
+  const handleDelete =  async (id) => {
+
+    //apiService here 
 
   }
   
@@ -76,8 +80,8 @@ function Reward( ) {
           <Card.Title style={{ marginTop:'10px' }} ><h1>{state.reward}</h1></Card.Title>
           <Card.Text style={{ marginTop:'0px' }}>{moment(state.date).format("YYYY-MM-DD-kk:mm")}</Card.Text>
           <Card.Text style={{ margin:'0px' }}>POINTS : {state.points}</Card.Text>
+        
         </Card.Body>
-          {/* <LinkContainer to={`/reward/${reward._id}`} component={<Reward></Reward>}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}> */} 
     </Card>
   </div>
 
@@ -103,9 +107,12 @@ function Reward( ) {
       </Form.Group>
     </Form>
     
+      <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px'}} onClick={handleDelete}>DELETE REWARD</Button> 
+
+    
     <LinkContainer to={`/dashboard`} style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
-                <Button>Dashboard</Button>
-              </LinkContainer>
+        <Button>Dashboard</Button>
+    </LinkContainer>
 
     {!updated
     ? <Alert dismissable='true' variant="secondary">Update the information</Alert>

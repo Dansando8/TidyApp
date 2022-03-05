@@ -9,7 +9,7 @@ function Image() {
     const files = e.target.files
     const data =  new FormData()
     data.append('file', files[0])
-    data.append('upload_preset', 'tiddyappimages')
+    data.append('upload_preset', 'tidyappimages')
     setLoading(true)
 
     const res = await fetch('https://api.Cloudinary.com/v1_1/dqdzczpoi/image/upload', {

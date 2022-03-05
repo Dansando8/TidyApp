@@ -15,7 +15,7 @@ apiService.addNewReward = async (newReward) => {
 apiService.uploadImage = async (files) => {
   const data =  new FormData()
   data.append('file', files[0])
-  data.append('upload_preset', 'tiddyappimages')
+  data.append('upload_preset', 'tidyappimages')
   const res = await fetch('https://api.Cloudinary.com/v1_1/dqdzczpoi/image/upload', {
     method:'POST', 
     body: data 
@@ -36,7 +36,7 @@ apiService.fetchRewardById = async (id) => {
 }
 
 apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
-  const data = await fetch(`http://localhost:3030/rewards/${id}`,{
+  const data = await fetch(`http://localhost:3030/rewards/${id}`, {
     headers:{
       Accept: 'application/json', 
       'Content-type': 'application/json'
@@ -45,6 +45,18 @@ apiService.findAndUpdateRewardByID = async(id, updatedReward) => {
     body: JSON.stringify(updatedReward)
   }); 
   return data.json(); 
+}
+
+apiService.findAndDeleteRewardByID = async(id) => {
+  const data = await fetch(`http://localhost:3030/rewards/${id}`, {
+    headers: {
+    Accept: 'application/json', 
+    'Content-Type': 'application/json'
+  },
+  method:'DELETE', 
+  }
+  )
+  return
 }
 
 //----> TASKS <-------//
