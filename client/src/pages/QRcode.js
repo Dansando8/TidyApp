@@ -15,9 +15,14 @@ function QRcode() {
     .then(taskFound => setTask(taskFound)); 
   }, [id]);
 
-  
+  console.log(typeof task.taskPoints)
+  const { points } = task 
+  console.log(typeof points)
+  String(points)
+  console.log(typeof points)
 
-  console.log(task,'from QR')
+
+
 
   return (
     <div> 
@@ -25,7 +30,7 @@ function QRcode() {
       <h1>{task.taskName}</h1>
       <h2>{task.taskPoints}</h2>
     </div>
-    <QrCode value='https://b41b-213-86-144-42.ngrok.io/homepage' size='300'/>
+    <QrCode value={`https://a5cd-213-86-144-42.ngrok.io/exectask/?value=${task.taskPoints}`} size='300'/>
     </div>
   )
 }

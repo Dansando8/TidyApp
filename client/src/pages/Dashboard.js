@@ -4,6 +4,7 @@ import apiService from '../apiService'
 import Rewards from './Rewards'
 import Tasks from './Tasks'
 import TaskForm from './TaskForm'
+import ExecTask from './ExecTask'
 
 
 
@@ -55,7 +56,6 @@ tasks.sort((a,b)=> a.taskPoints - b.taskPoints);
 //Updating points and progress bar when a task is done 
 const [taskPoints, setTaskPoints] = useState(); 
 
-
 const findRemainingPoints = (taskPoints) => {
   function setTaskTest(taskPoints){
     setTaskPoints(taskPoints)
@@ -86,6 +86,7 @@ const findRemainingPoints = (taskPoints) => {
       <Rewards rewards={rewards} ></Rewards>
       <TaskForm updateTasks={updateTasks}></TaskForm>
       <Tasks tasks={tasks} findRemainingPoints={findRemainingPoints}></Tasks>
+      <ExecTask findRemainingPoints={findRemainingPoints}></ExecTask>
       </div>
     </div>
   )
