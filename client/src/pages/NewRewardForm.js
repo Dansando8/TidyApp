@@ -9,7 +9,7 @@ const timeNow = moment(Date.now()).format("YYYY-MM-DDTkk:mm");
 const initialState = {
   reward : '', 
   points:'',
-  reamainingPoints: '', 
+  remainingPoints: '', 
   accumulatedPoints: '', 
   imageUrl: '', 
   date: timeNow
@@ -37,8 +37,8 @@ function NewRewardForm({updateRewards}) {
       const newReward = {
         reward: state.reward,
         points: state.points,
-        reamainingPoints: state.reamainingPoints,
-        accumulatedPoints: state.accumulatedPoints,
+        remainingPoints: state.points,
+        accumulatedPoints: 0,
         imageUrl: imageUrl,
         date: state.date
       }
@@ -60,8 +60,7 @@ function NewRewardForm({updateRewards}) {
   <Form.Group  className="mb-3" controlId="formBasicPassword">
   <Form.Label>Reward points</Form.Label>  
     <Form.Control  name="points" type="number"  placeholder="Reward points" value ={state.points} onChange={handleChange} />
-    <Form.Control  name="remainingPoints" type="hidden"  value={state.points} onChange={handleChange} />
-    <Form.Control  name="accumulatedPoints" type="hidden"  value={0} />
+    <Form.Control  name="remainingPoints" type="hidden" value={state.points} onChange={handleChange} />
   </Form.Group>
   
   <Form.Group>

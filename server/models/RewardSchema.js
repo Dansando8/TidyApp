@@ -16,7 +16,7 @@ const rewardSchema = mongoose.Schema({
   },
   accumulatedPoints:{
     type: Number, 
-    required: false
+    required: true
   },
   imageUrl:{ 
     type:String, 

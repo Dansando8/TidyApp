@@ -23,7 +23,8 @@ function Rewards({rewards}) {
                 <Card.Title style={{ marginTop:'10px' }} ><h1>{reward.reward}</h1></Card.Title>
               </Card.Body>
                 <Card.Text style={{ marginTop:'0px' }}>{moment(reward.date).format("YYYY-MM-DD-kk:mm")}</Card.Text>
-                <Card.Text style={{ margin:'0px' }}>POINTS : {reward.points}</Card.Text>
+                <Card.Text style={{ margin:'0px' }}>GOAL:  {reward.points}</Card.Text>
+                <Card.Text style={{ margin:'0px' }}>Remaining poins: {reward.remainingPoints}</Card.Text>
                 <LinkContainer to={`/reward/${reward._id}`} component={<Reward></Reward>}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
                   <Button>MODIFY</Button>
                 </LinkContainer>
