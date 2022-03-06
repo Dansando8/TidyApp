@@ -6,9 +6,6 @@ import Reward from './Reward'
 import { LinkContainer } from 'react-router-bootstrap'
 
 function Rewards({rewards}) {
-  
-
-
 
   return (
     <div>

@@ -20,6 +20,9 @@ function Tasks({tasks, findRemainingPoints}) {
           <LinkContainer to={`/tasks/${task._id}`}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
             <ListGroup.Item ><span style={{color:'white' }}> <FaTrashRestoreAlt/> <br/> DELETE </span></ListGroup.Item>
           </LinkContainer> 
+          <LinkContainer to={`/tasks/qrcode/${task._id}`}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
+            <ListGroup.Item ><span style={{color:'white' }}> <FaTrashRestoreAlt/> <br/>CREATE QR CODE</span></ListGroup.Item>
+          </LinkContainer> 
         </ListGroup>
           <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}} onClick={() =>  findRemainingPoints(task.taskPoints)}>Apply points</Button>
       </Card>
