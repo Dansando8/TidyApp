@@ -18,8 +18,8 @@ function Tasks({tasks}) {
           <ListGroup.Item><h1>{task.taskName}</h1></ListGroup.Item>
           <ListGroup.Item><h1>Points: {task.taskPoints}</h1></ListGroup.Item>
           <LinkContainer to={`/tasks/${task._id}`}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
-            <ListGroup.Item ><FaTrashRestoreAlt/></ListGroup.Item>
-          </LinkContainer>
+            <ListGroup.Item ><span style={{color:'white' }}> <FaTrashRestoreAlt/> <br/> DELETE </span></ListGroup.Item>
+          </LinkContainer> 
         </ListGroup>
           <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}}>Apply points</Button>
       </Card>
