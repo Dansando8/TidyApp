@@ -12,11 +12,11 @@ const rewardSchema = mongoose.Schema({
   },
   remainingPoints: {
     type: Number, 
-    required:true
+    required: false
   },
   accumulatedPoints:{
     type: Number, 
-    required:true
+    required: false
   },
   imageUrl:{ 
     type:String, 
