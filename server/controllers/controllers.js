@@ -94,7 +94,7 @@ const findAndDeleteTaskByID = async(req, res) => {
   try {
     const {taskId} = req.params
     const task = await Task.findByIdAndDelete(taskId)
-    if(!task) res.status(404). send('No task found')
+    if(!task) res.status(404).send('No task found')
     res.send(task).status(200)
   } catch (error) {
     res.send(error).status(500)

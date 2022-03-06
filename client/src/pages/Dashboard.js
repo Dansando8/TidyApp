@@ -6,6 +6,7 @@ import Tasks from './Tasks'
 import TaskForm from './TaskForm'
 
 
+
 function Dashboard() {
   
   const[rewards, setRewards] = useState([])
@@ -20,7 +21,7 @@ function Dashboard() {
     GetRewardList();
   },[])
   
-  //Update rewards from the NewReward form component
+///Update rewards from the NewReward form component
 
   const updateRewards = (savedReward) => {
     setRewards([savedReward, ...rewards])
@@ -51,16 +52,37 @@ const updateTasks = (savedTask) => {
 rewards.sort((a,b)=> a.points - b.points); 
 tasks.sort((a,b)=> a.taskPoints - b.taskPoints); 
 
+//Updating points when a task is done 
+const [taskPoints, setTaskPoints] = useState(); 
+
+const findRemainingPoints = (taskPoints) => {
+  function setTaskTest(taskPoints){
+    setTaskPoints(taskPoints)
+  }
+  rewards.forEach(reward => {
+    let pointsToGoal = reward.remainingPoints + (taskPoints);
+    
+    console.log(pointsToGoal, "points to get there");  
+    apiService.findAndUpdateRewardByID(reward._id, {remainingPoints: pointsToGoal}); 
+  });
+    const GetTaskList = async() => {
+      const updatedRewards = await apiService.getRewards()
+      setRewards(updatedRewards)
+    }
+    GetTaskList();
+}
+
+
 
   return (
     <div>
+      <div>
+        <NewRewardForm updateRewards={updateRewards}></NewRewardForm>
+      </div>
     <div>
-     <NewRewardForm updateRewards={updateRewards}></NewRewardForm>
-     </div>
-     <div>
       <Rewards rewards={rewards} ></Rewards>
       <TaskForm updateTasks={updateTasks}></TaskForm>
-      <Tasks tasks={tasks} ></Tasks>
+      <Tasks tasks={tasks} findRemainingPoints={findRemainingPoints}></Tasks>
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import {FaTrashRestoreAlt} from 'react-icons/fa'
 
 
-function Tasks({tasks}) {
+function Tasks({tasks, findRemainingPoints}) {
 
 
   return (
@@ -21,7 +21,7 @@ function Tasks({tasks}) {
             <ListGroup.Item ><span style={{color:'white' }}> <FaTrashRestoreAlt/> <br/> DELETE </span></ListGroup.Item>
           </LinkContainer> 
         </ListGroup>
-          <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}}>Apply points</Button>
+          <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}} onClick={() =>  findRemainingPoints(task.taskPoints)}>Apply points</Button>
       </Card>
       </div>
       )
