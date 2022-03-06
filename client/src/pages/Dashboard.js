@@ -52,8 +52,9 @@ const updateTasks = (savedTask) => {
 rewards.sort((a,b)=> a.points - b.points); 
 tasks.sort((a,b)=> a.taskPoints - b.taskPoints); 
 
-//Updating points when a task is done 
+//Updating points and progress bar when a task is done 
 const [taskPoints, setTaskPoints] = useState(); 
+
 
 const findRemainingPoints = (taskPoints) => {
   function setTaskTest(taskPoints){

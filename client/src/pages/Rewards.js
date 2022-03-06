@@ -7,6 +7,9 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function Rewards({rewards}) {
   
+
+
+
   return (
     <div>
 
@@ -14,12 +17,22 @@ function Rewards({rewards}) {
      
     <div className="reward-container">
     {rewards.map((reward) =>{ 
+      //Updating the progress bar, move to helpers eventually
+      let progress = 0; 
+      const updateProgressBar = () => {
+      progress = reward.remainingPoints / reward.points * 100
+      return progress;
+      }
+      updateProgressBar(); 
+
       return(  
         <div key = {reward._id}>
           <Card style={{borderRadius:'2px', margin:"20px", width: '18rem', height:'36rem' }}>
             <Card.Img src={reward.imageUrl} style={{objectFit: 'cover',  padding:'10px', width:'18rem', height:'17rem' }}></Card.Img>
               <Card.Body>
-                <ProgressBar striped variant="warning" now={60} syle={{ padding:"10px"}}/>
+                <ProgressBar striped variant="warning" 
+                now={progress} 
+                syle={{ padding:"10px"}}/>
                 <Card.Title style={{ marginTop:'10px' }} ><h1>{reward.reward}</h1></Card.Title>
               </Card.Body>
                 <Card.Text style={{ marginTop:'0px' }}>{moment(reward.date).format("YYYY-MM-DD-kk:mm")}</Card.Text>
