@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import apiService from '../apiService'
 import QrCode from 'react.qrcode.generator'
 import { useParams } from 'react-router-dom'
+
 
 function QRcode() {
 
@@ -13,6 +14,8 @@ function QRcode() {
     apiService.findTaskById(id)
     .then(taskFound => setTask(taskFound)); 
   }, [id]);
+
+  
 
   console.log(task,'from QR')
 
