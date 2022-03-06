@@ -10,7 +10,7 @@ const initialState = {
   reward : '', 
   points:'',
   reamainingPoints: '', 
-  accumulatedPoints: 0, 
+  accumulatedPoints: '', 
   imageUrl: '', 
   date: timeNow
 }
@@ -61,7 +61,7 @@ function NewRewardForm({updateRewards}) {
   <Form.Label>Reward points</Form.Label>  
     <Form.Control  name="points" type="number"  placeholder="Reward points" value ={state.points} onChange={handleChange} />
     <Form.Control  name="remainingPoints" type="hidden"  value={state.points} onChange={handleChange} />
-    <Form.Control  name="accumulatedPoints" type="hidden"  value={0} onChange={handleChange} />
+    <Form.Control  name="accumulatedPoints" type="hidden"  value={0} />
   </Form.Group>
   
   <Form.Group>

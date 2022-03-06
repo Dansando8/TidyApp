@@ -12,7 +12,9 @@ function Reward( ) {
 
   const resetReward = {
     reward : '', 
-    points:'', 
+    points:'',
+    remainingPoints: '', 
+    accumulatedPoints: '',  
     imageUrl: '', 
     date: Date
   }

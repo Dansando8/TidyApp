@@ -6,12 +6,12 @@ import Reward from './Reward'
 import { LinkContainer } from 'react-router-bootstrap'
 
 function Rewards({rewards}) {
-
+  
   return (
     <div>
 
     <h1>REWARDS</h1>
-
+     
     <div className="reward-container">
     {rewards.map((reward) =>{ 
       return(  
