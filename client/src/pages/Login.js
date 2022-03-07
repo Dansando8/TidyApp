@@ -3,14 +3,15 @@ import {Card, Form, Button} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
 import apiService from '../apiService';
 import Register from './Register';
-import {BiHappyBeaming} from 'react-icons/bi'
+import { BiHappyBeaming } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
 
+const userInitState = {
+  email: '', 
+  password: '', 
+}
 function Login() {
-
-  const userInitState = {
-    email: '', 
-    password: '', 
-  }
+  const navigate = useNavigate();
 
   const [state, setState] = useState(userInitState);
   
@@ -25,22 +26,33 @@ function Login() {
     const handleSubmit = async (e) => {
       
       e.preventDefault()
-  
-      const User = {
+      
+      const userInfo = {
         email: state.email, 
         password: state.password, 
       }
-      
-      // const savedReward = await apiService.addNewReward(newReward)
-      // updateRewards(savedReward)
-      // setState(initialState); 
+
+      const res = await apiService.userLogin(userInfo)
+      console.log(res, 'this is the handleSubmit'); 
+
+      if (res.error){
+        alert(`${res.message}`);
+        setState(userInitState);
+      } else {
+      console.log('loged in!')
+      navigate('/dashboard')
+      }
     }
 
+    const validateForm = () => {
+      return !state.email || !state.password;
+    }
+    console.log(state); 
   return (
     <div>
-    <Card  style={{borderRadius:'5px', margin:"20px", width: '30rem', height:'22rem' }}>
+    <Card  style={{borderRadius:'5px', margin:"20px", width: '30rem', height:'24rem' }}>
       <Card.Body>
-        <h1>Glad to see you back <BiHappyBeaming/> </h1>
+        <h1 style={{marginTop:"20px", marginBottom:'40px'}}>Glad to see you back <BiHappyBeaming/></h1>
         <Form onSubmit={handleSubmit}>
 
           <Form.Group  className="mb-3" controlId="formBasicEmail">
@@ -53,7 +65,7 @@ function Login() {
             <Form.Control  name="password" type="password"  placeholder="Password" value ={state.password} onChange={handleChange} />
           </Form.Group>
         
-          <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
+          <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }} disabled={validateForm()}>
             Login
           </Button>
         </Form>

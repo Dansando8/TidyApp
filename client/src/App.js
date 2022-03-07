@@ -11,6 +11,8 @@ import Task from './pages/Task'
 import QRcode from './pages/QRcode';
 import ExecTask from './pages/ExecTask';
 import Register from './pages/Register';
+import Login from './pages/Login';
+import PageNotFound from './pages/PageNotFound';
 
 
 
@@ -28,6 +30,8 @@ function App() {
         <Route path='/tasks/qrcode/:id' element={<QRcode></QRcode>}></Route>
         <Route path='/tasks/exectask/:points' element={<ExecTask></ExecTask>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/*'element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

@@ -36,9 +36,9 @@ function QRcode() {
       <h1>{task.taskName}</h1>
       <h2>{task.taskPoints}</h2>
     </div>
-    {console.log(`https://630d-213-86-144-42.ngrok.io/tasks/exectask/${testUrl}`, 'From rendering')}
+    {console.log(`http://c62d-213-86-144-42.ngrok.io/tasks/exectask/${testUrl}`, 'From rendering')}
     {testUrl?
-    (<QrCode value={`https://630d-213-86-144-42.ngrok.io/tasks/exectask/?${testUrl}`} size='300'/>) :
+    (<QrCode value={`http://c62d-213-86-144-42.ngrok.io/tasks/exectask/?${testUrl}`} size='300'/>) :
     (<h1>Loading...</h1>)
     }
   

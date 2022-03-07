@@ -144,15 +144,17 @@ const createNewUser = async(req, res) => {
 
 const userLogin = async(req, res) => {
   try {
+    
     const {email, password} = req.body; 
-    const user = User.findOne({email: email}); 
-    const validatedPassword = await bcrypt.compare(password, user.password); 
+    const user = await User.findOne({email: email}); 
+    const validatedPassword = await bcrypt.compare(password, user.password);
+    console.log(validatedPassword, password); 
     if(!validatedPassword) throw new Error(); 
     req.session.uid = user._id;
     res.status(200).send(user);
   } catch (error) {
     res
-      .staus(401)
+      .status(401)
       .send({error, message: 'Username or password incorrect'})
   }
 }

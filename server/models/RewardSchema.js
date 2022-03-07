@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
-
+const ObjectId = mongoose.Schema.ObjectId;
 
 const rewardSchema = mongoose.Schema({
+
+  userId: {
+    type: ObjectId, 
+    required:true,  
+  },
   reward: {
     type: String,
     required: true

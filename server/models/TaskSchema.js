@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.ObjectId;
 
 
 const taskSchema = mongoose.Schema({
+  userId: {
+    type: String, 
+    required:true,  
+  },
   taskName: {
     type: String,
     required: true

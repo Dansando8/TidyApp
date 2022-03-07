@@ -58,6 +58,6 @@ router.get('/tasks/:taskId', findTaskByID)
 router.post('/users', createNewUser)
 
 //Login 
-router.post('login', userLogin)
+router.post('/login', userLogin)
 
 module.exports = router; 

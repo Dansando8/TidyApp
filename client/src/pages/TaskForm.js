@@ -26,7 +26,8 @@ function TaskForm({updateTasks}) {
 
     const newTask = {
       taskName: state.taskName, 
-      taskPoints: state.taskPoints, 
+      taskPoints: state.taskPoints,
+      userId: "adcd",  
     }
     const savedTask = await apiService.postTask(newTask)
     console.log(savedTask, 'SAVED TASK')
@@ -40,9 +41,9 @@ function TaskForm({updateTasks}) {
     <h1>TASKS</h1>
     <Form> 
       <Form.Group className='d-flex'style={{margin:'10px'}}>
+        <Form.Control name="taskName" placeholder="Task name" type='text' maxLength="35" value={state.taskName} style={{marginLeft:'10px'}} onChange={handleChange} /> 
+        <Form.Control  name="taskPoints" placeholder="Task points" type='number' value={state.taskPoints} style={{marginLeft:'10px'}} onChange={handleChange} /> 
         <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px' }} onClick={handleSubmit}>NEW TASK</Button>
-        <Form.Control name="taskName" placeholder="Task points" type='text' maxLength="35" value={state.taskName} style={{marginLeft:'10px'}} onChange={handleChange} /> 
-        <Form.Control  name="taskPoints" placeholder="Task name" type='number' value={state.taskPoints} style={{marginLeft:'10px'}} onChange={handleChange} /> 
       </Form.Group>
     </Form>
     </div>

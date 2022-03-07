@@ -144,14 +144,34 @@ apiService.findAndDeleteTaskByID = async(id) => {
 apiService.addNewUser = async (newUser) => {
   try {
     const res = await fetch(`${BASE_URL}users`, {
-    method: 'POST', 
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',   
     headers: {'Content-Type': 'application/json'}, 
     body: JSON.stringify(newUser) 
   });
   const data = await res.json();
   return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+}
+
+//Login
+
+apiService.userLogin = async (user) =>{
+  try {
+    const res = await fetch(`${BASE_URL}login`, {
+      method: 'POST', 
+      credentials: 'include', 
+      mode: 'cors', 
+      headers: {'Content-Type':'application/json'}, 
+      body: JSON.stringify(user),
+    })
+    const data = await res.json();
+    return data; 
+  } catch (error) {
+    console.log(error); 
   }
 }
 

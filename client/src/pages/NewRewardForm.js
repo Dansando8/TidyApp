@@ -27,6 +27,9 @@ function NewRewardForm({updateRewards}) {
       }));
     };
 
+  
+    
+  
     const handleSubmit = async (e) => {
       
       e.preventDefault()
@@ -40,7 +43,7 @@ function NewRewardForm({updateRewards}) {
         remainingPoints: state.points,
         accumulatedPoints: 0,
         imageUrl: imageUrl,
-        date: state.date
+        date: state.date,  
       }
       
       const savedReward = await apiService.addNewReward(newReward)
@@ -50,7 +53,7 @@ function NewRewardForm({updateRewards}) {
 
   return (
     
-    <div>
+    <div className='new-reward-form'>
 <Form onSubmit={handleSubmit}>
   <Form.Group  className="mb-3" controlId="formBasicEmail">
     <Form.Label>Reward name</Form.Label>
@@ -74,7 +77,7 @@ function NewRewardForm({updateRewards}) {
   </Form.Group>
 
   <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
-    Submit
+   Create new reward
   </Button>
 </Form>
   </div>
