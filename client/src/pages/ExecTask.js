@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom'
 
 function ExecTask({findRemainingPoints}) {
 
-  // const { points } = useParams()
-  // console.log(points)
+  const { points } = useParams()
+  console.log(points)
 
-  // findRemainingPoints(task.taskPoints)
+  findRemainingPoints(points)
+
   return (
     <div>
     
