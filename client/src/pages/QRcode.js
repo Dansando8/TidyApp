@@ -28,7 +28,7 @@ function QRcode() {
   console.log(URLpoints, " points from the QR")
   console.log(typeof task.taskPoints)
   console.log(typeof URLpoints)
-  const URL = `http://50c3-213-86-144-42.ngrok.io/tasks/exectask/${URLpoints}`
+  const URL = `https://776b-213-86-144-42.ngrok.io/exectask/${URLpoints}`
   console.log(URLpoints, "those are points")
   console.log(typeof URLpoints)
 
@@ -39,7 +39,11 @@ function QRcode() {
       <h2>{task.taskPoints}</h2>
     </div>
     {console.log(URL, 'From rendering')}
-    <QrCode await value={URL} size='300'/>
+    {URLpoints?
+    (<QrCode value={URL} size='300'/>) :
+    (<h1>Loading...</h1>)
+    }
+    
     </div>
   )
 }

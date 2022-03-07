@@ -56,10 +56,11 @@ tasks.sort((a,b)=> a.taskPoints - b.taskPoints);
 //Updating points and progress bar when a task is done 
 const [taskPoints, setTaskPoints] = useState(); 
 
-const findRemainingPoints = (taskPoints) => {
+const findRemainingPoints = async (taskPoints) => {
   function setTaskTest(taskPoints){
     setTaskPoints(taskPoints)
   }
+  
   rewards.forEach(reward => {
     let pointsToGoal = reward.remainingPoints + (taskPoints);
     
