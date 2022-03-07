@@ -26,8 +26,8 @@ function App() {
         <Route path='/tasks' element={<Tasks></Tasks>}></Route>
         <Route path='/tasks/:id' element={<Task></Task>}></Route>
         <Route path='/tasks/qrcode/:id' element={<QRcode></QRcode>}></Route>
-        <Route path='/exectask/:points' element={<ExecTask></ExecTask>}></Route>
-        <Route path='register' element={<Register></Register>}></Route>
+        <Route path='/tasks/exectask/:points' element={<ExecTask></ExecTask>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

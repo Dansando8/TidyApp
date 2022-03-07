@@ -26,7 +26,7 @@ function Register() {
       
       e.preventDefault()
 
-      const files = document.querySelector('input[name="imageUrl"]').files
+      const files = document.querySelector('input[name="profilePictureURL"]').files
       const profilePictureURL = await apiService.uploadImage(files); 
   
       const newUser = {
@@ -36,9 +36,9 @@ function Register() {
         profilePictureURL: profilePictureURL
       }
       
-      // const savedReward = await apiService.addNewReward(newReward)
-      // updateRewards(savedReward)
-      // setState(initialState); 
+      const savedUser = await apiService.addNewUser(newUser)
+      console.log(savedUser)
+      setState(userInitState); 
     }
   return (
     <div className ='register-form'>
@@ -48,23 +48,23 @@ function Register() {
         <Form onSubmit={handleSubmit}>
           <Form.Group  className="mb-3" controlId="formBasicEmail">
             <Form.Label>User name</Form.Label>
-            <Form.Control  name="userName" type="text" placeholder="Choose a username" maxLength="35" value ={state.reward} onChange={handleChange} />
+            <Form.Control  name="userName" type="text" placeholder="Choose a username" maxLength="35" value ={state.userName} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group  className="mb-3" controlId="formBasicEmail">
             <Form.Label>E-mail</Form.Label>
-            <Form.Control  name="email" type="text" placeholder="Set the email you will login with" maxLength="35" value ={state.reward} onChange={handleChange} />
+            <Form.Control  name="email" type="text" placeholder="Set the email you will login with" maxLength="35" value ={state.email} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group  className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>  
-            <Form.Control  name="password" type="number"  placeholder="Set your password" value ={state.points} onChange={handleChange} />
+            <Form.Control  name="password" type="text"  placeholder="Set your password" value ={state.password} onChange={handleChange} />
             <Form.Control  name="remainingPoints" type="hidden" value={state.points} onChange={handleChange} />
           </Form.Group>
           
           <Form.Group>
           <Form.Label>Profile picture</Form.Label>  
-            <Form.Control  name="profilePictureURL" type='file' className ='custom-file-label' value ={state.imageUrl} onChange={handleChange}></Form.Control>
+            <Form.Control  name="profilePictureURL" type='file' className ='custom-file-label' value ={state.profilePictureURL} onChange={handleChange}></Form.Control>
           </Form.Group>
 
           <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'20px 10px' }}>

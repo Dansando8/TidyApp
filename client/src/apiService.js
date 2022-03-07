@@ -137,5 +137,22 @@ apiService.findAndDeleteTaskByID = async(id) => {
   }
   }
 
+// USERS
+
+//Add new user 
+
+apiService.addNewUser = async (newUser) => {
+  try {
+    const res = await fetch(`${BASE_URL}users`, {
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json'}, 
+    body: JSON.stringify(newUser) 
+  });
+  const data = await res.json();
+  return data;
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default apiService; 
