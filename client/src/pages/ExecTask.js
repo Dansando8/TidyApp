@@ -28,7 +28,7 @@ function ExecTask() {
 
     const findRemainingPoints = async (taskPoints) => {
       rewards.forEach(reward => {
-        let pointsToGoal = reward.remainingPoints + (taskPoints);
+        let pointsToGoal = reward.remainingPoints - (taskPoints);
         console.log(pointsToGoal, 'points to goal')
         let reachedPoints = reward.accumulatedPoints + (taskPoints); 
         console.log(reachedPoints, 'reached points')

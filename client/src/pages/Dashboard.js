@@ -83,8 +83,7 @@ tasks.sort((a,b)=> a.taskPoints - b.taskPoints);
       <Rewards rewards={rewards} ></Rewards>
       <TaskForm updateTasks={updateTasks}></TaskForm>
       <Tasks tasks={tasks} ></Tasks>
-      
-        <ExecTask ></ExecTask>
+
       </div>
     </div>
   )

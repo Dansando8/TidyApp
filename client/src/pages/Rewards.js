@@ -17,7 +17,7 @@ function Rewards({rewards}) {
       //Updating the progress bar, move to helpers eventually
       let progress = 0; 
       const updateProgressBar = () => {
-      progress = reward.remainingPoints / reward.points * 100
+      progress = reward.accumulatedPoints / reward.points * 100
       return progress;
       }
       updateProgressBar(); 
