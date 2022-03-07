@@ -56,7 +56,7 @@ function Login() {
           </Button>
         </Form>
       </Card.Body>
-        <LinkContainer to={`/register`} component={<Register>  </Register>}>
+        <LinkContainer to={`/register`} component={<Register> </Register>}>
           <p>You dont have an account ? <a href={"/register"}>Register</a></p>
           
         </LinkContainer>

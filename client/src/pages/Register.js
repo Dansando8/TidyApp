@@ -5,8 +5,8 @@ import apiService from '../apiService';
 function Register() {
 
   const userInitState = {
-    name: '', 
-    mail: '', 
+    userName: '', 
+    email: '', 
     password: '', 
     profilePictureURL: '', 
 
@@ -27,15 +27,13 @@ function Register() {
       e.preventDefault()
 
       const files = document.querySelector('input[name="imageUrl"]').files
-      const imageUrl = await apiService.uploadImage(files); 
+      const profilePictureURL = await apiService.uploadImage(files); 
   
-      const User = {
-        reward: state.reward,
-        points: state.points,
-        remainingPoints: state.points,
-        accumulatedPoints: 0,
-        imageUrl: imageUrl,
-        date: state.date
+      const newUser = {
+        userName: state.userName,
+        email: state.email,
+        password: state.password,
+        profilePictureURL: profilePictureURL
       }
       
       // const savedReward = await apiService.addNewReward(newReward)
@@ -43,34 +41,34 @@ function Register() {
       // setState(initialState); 
     }
   return (
-    <div>
+    <div className ='register-form'>
     
-    <Card  style={{borderRadius:'5px', margin:"20px", width: '30rem', height:'30rem' }}>
+    <Card  style={{borderRadius:'5px', margin:"20px", width: '30rem', height:'27rem' }}>
       <Card.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group  className="mb-3" controlId="formBasicEmail">
             <Form.Label>User name</Form.Label>
-            <Form.Control  name="reward" type="text" placeholder="Reward name 35 characters max" maxLength="35" value ={state.reward} onChange={handleChange} />
+            <Form.Control  name="userName" type="text" placeholder="Choose a username" maxLength="35" value ={state.reward} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group  className="mb-3" controlId="formBasicEmail">
-            <Form.Label>mail</Form.Label>
-            <Form.Control  name="reward" type="text" placeholder="Reward name 35 characters max" maxLength="35" value ={state.reward} onChange={handleChange} />
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control  name="email" type="text" placeholder="Set the email you will login with" maxLength="35" value ={state.reward} onChange={handleChange} />
           </Form.Group>
 
           <Form.Group  className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>  
-            <Form.Control  name="points" type="number"  placeholder="Reward points" value ={state.points} onChange={handleChange} />
+            <Form.Control  name="password" type="number"  placeholder="Set your password" value ={state.points} onChange={handleChange} />
             <Form.Control  name="remainingPoints" type="hidden" value={state.points} onChange={handleChange} />
           </Form.Group>
           
           <Form.Group>
           <Form.Label>Profile picture</Form.Label>  
-            <Form.Control  name="imageUrl" type='file' className ='custom-file-label' value ={state.imageUrl} onChange={handleChange}></Form.Control>
+            <Form.Control  name="profilePictureURL" type='file' className ='custom-file-label' value ={state.imageUrl} onChange={handleChange}></Form.Control>
           </Form.Group>
 
-          <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
-            Submit
+          <Button variant="primary" type="submit" style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'20px 10px' }}>
+            Register
           </Button>
         </Form>
       </Card.Body>

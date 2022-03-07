@@ -35,6 +35,14 @@ body{
   width: 100vw;
 }
 
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
 h1 {
   font-family: 'Barlow';
   font-weight: 300 !important;
