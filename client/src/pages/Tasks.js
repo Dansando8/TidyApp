@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import {FaTrashRestoreAlt} from 'react-icons/fa'
+import {FaQrcode, FaTrashRestoreAlt} from 'react-icons/fa'
 
 
 function Tasks({tasks, findRemainingPoints}) {
@@ -21,10 +21,10 @@ function Tasks({tasks, findRemainingPoints}) {
             <ListGroup.Item ><span style={{color:'white' }}> <FaTrashRestoreAlt/> <br/> DELETE </span></ListGroup.Item>
           </LinkContainer> 
           <LinkContainer to={`/tasks/qrcode/${task._id}`}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
-            <ListGroup.Item ><span style={{color:'white' }}> <FaTrashRestoreAlt/> <br/>CREATE QR CODE</span></ListGroup.Item>
+            <ListGroup.Item ><span style={{color:'white' }}> <FaQrcode/> <br/>CREATE QR CODE</span></ListGroup.Item>
           </LinkContainer> 
         </ListGroup>
-          <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}} onClick={() =>  findRemainingPoints(task.taskPoints)}>Apply points</Button>
+          {/* <Button style={{borderRadius:'2px', border:'none', backgroundColor:'grey'}} onClick={() =>  findRemainingPoints(task.taskPoints)}>Apply points</Button> */}
       </Card>
       </div>
       )

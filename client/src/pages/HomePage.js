@@ -1,8 +1,15 @@
 import React from 'react'
+import Login from './Login'
+import Register from './Register'
 
 function HomePage() {
+
+
   return (
-    <div>Yeahhh my app started to work 🥳</div>
+    <div className ='login-form'>
+      <Login></Login>
+      <Register></Register>
+     </div>
   )
 }
 
