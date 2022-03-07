@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import apiService from '../apiService'
 import { useParams } from 'react-router-dom'
 import QrCode from 'react.qrcode.generator'
+import logo from '../assets/logo.png'
 
 
 function QRcode() {
@@ -31,18 +32,20 @@ function QRcode() {
   // console.log(typeof URLpoints)
 
   return (
-    <div> 
+    <div className="qr-container"> 
+    <p>Use ctr+p to print</p>
     <div>
-      <h1>{task.taskName}</h1>
-      <h2>{task.taskPoints}</h2>
+      <h1 id='qr-task-title' style={{width:"30rem"}}>{task.taskName}</h1>
     </div>
+
     {console.log(`http://c62d-213-86-144-42.ngrok.io/tasks/exectask/${testUrl}`, 'From rendering')}
     {testUrl?
     (<QrCode value={`http://c62d-213-86-144-42.ngrok.io/tasks/exectask/?${testUrl}`} size='300'/>) :
     (<h1>Loading...</h1>)
     }
-  
-    <h1>dash</h1>
+    <img src={logo} style={{width:"10rem"}} alt="Logo"></img>
+    <p style={{fontSize:"2rem"}}>This task worth {task.taskPoints} points</p>
+
     </div>
   )
 }

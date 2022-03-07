@@ -15,7 +15,7 @@ function Tasks({tasks, findRemainingPoints}) {
         <div key={task._id}className='individual-class-container'>
         <Card style={{ width: '18rem', margin: '20px'}}>
         <ListGroup variant="flush">
-          <ListGroup.Item>
+          <ListGroup.Item style={{ height: '8rem'}} >
           <FaCheckCircle></FaCheckCircle>
           <p  style={{fontSize:'1.5rem', padding:"0px"}}>{task.taskName}</p>
           </ListGroup.Item>
