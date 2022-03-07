@@ -1,6 +1,7 @@
 const  Reward = require('../models/RewardSchema.js')
 const Task = require('../models/TaskSchema.js')
 const User = require('../models/UserSchema.js')
+const bcrypt = require('bcrypt'); 
 
 //Post one reward 
 
@@ -118,15 +119,43 @@ const findTaskByID = async(req, res) =>  {
 //-------> USERS <-----------//
 
 const createNewUser = async(req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email: email });
+  if (user)
+    return res
+      .status(409)
+      .send({ error: '409', message: 'User already exists' });
   try {
-    const user = await User.create(req.body); 
-    res.send(user).status(200)
+    if (password === '') throw new Error();
+    const hash = await bcrypt.hash(password, 10);
+    const newUser = new User({
+      ...req.body,
+      password: hash,
+    });
+    const user = await newUser.save();
+    req.session.uid = user._id;
+    res.status(201).send(user);
   } catch (error) {
-    console.log(error);
-    res.send(error).status(500);
+    res.status(400).send({ error, message: 'Could not create user' });
   }
 }
 
+//Login
+
+const userLogin = async(req, res) => {
+  try {
+    const {email, password} = req.body; 
+    const user = User.findOne({email: email}); 
+    const validatedPassword = await bcrypt.compare(password, user.password); 
+    if(!validatedPassword) throw new Error(); 
+    req.session.uid = user._id;
+    res.status(200).send(user);
+  } catch (error) {
+    res
+      .staus(401)
+      .send({error, message: 'Username or password incorrect'})
+  }
+}
 
 module.exports = { 
   postReward, 
@@ -138,5 +167,6 @@ module.exports = {
   findTasks, 
   findAndDeleteTaskByID,
   findTaskByID,
-  createNewUser 
+  createNewUser, 
+  userLogin
 }

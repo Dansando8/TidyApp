@@ -11,6 +11,7 @@ const {
   findAndDeleteTaskByID,
   findTaskByID,
   createNewUser,  
+  userLogin,
 } = require('../controllers/controllers.js')
 
 
@@ -56,5 +57,7 @@ router.get('/tasks/:taskId', findTaskByID)
 
 router.post('/users', createNewUser)
 
+//Login 
+router.post('login', userLogin)
 
 module.exports = router; 
