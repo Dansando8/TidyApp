@@ -1,29 +1,58 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState  } from 'react'
 import { useParams } from 'react-router-dom'
+import apiService from '../apiService';
 
-function ExecTask({findRemainingPoints}) {
+
+function ExecTask() {
+  console.log('ExecTask()'); 
+
 
   const { points } = useParams()
-  // const pointsNumber = parseInt(points)
-  const pointsNumber = parseInt(points)
-  // console.log(typeof pointsNumber, 'these are the points');
+  const taskPoints = parseInt(points)
+  console.log(taskPoints, 'these are the points');
   
-  
-  useEffect( ()  => {
-    try {
-     if(pointsNumber){
-       findRemainingPoints(pointsNumber)
-      } else console.log('loading'); 
-    } catch (error) {
-      console.log(error)
-    }
-  },[])
+  // findRemainingPoints(pointsNumber);
 
+  const [rewards, setRewards] = useState({})
+
+  useEffect( ()  => {
+
+      const GetRewardList = async() => {
+        const rewardList = await apiService.getRewards()
+        setRewards(rewardList); 
+      }
+      GetRewardList()
+    },[])
+
+    console.log(rewards.remainingPoints);
+
+    const findRemainingPoints = async (taskPoints) => {
+      rewards.forEach(reward => {
+        let pointsToGoal = reward.remainingPoints + (taskPoints);
+        console.log(pointsToGoal, 'points to goal')
+        let reachedPoints = reward.accumulatedPoints + (taskPoints); 
+        console.log(reachedPoints, 'reached points')
+        
+        const updatePoints = async() =>{
+        await apiService.findAndUpdateRewardByID(reward._id, {remainingPoints: pointsToGoal, accumulatedPoints: reachedPoints,} ); 
+        }
+        updatePoints();
+      });
+    }
+
+    findRemainingPoints(taskPoints); 
+
+    
+  
+
+    console.log(rewards); 
+    
+    
   return (
     <div>
     
     <h1>This task has been updated</h1>
-    
+
     </div>
   )
 }

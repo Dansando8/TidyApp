@@ -9,7 +9,7 @@ function QRcode() {
   const { id } = useParams()
 
  
-  const [task, setTask]= useState({})
+  const [task, setTask]= useState('')
   const [points, setPoints] = useState()
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function QRcode() {
   console.log(URLpoints, " points from the QR")
   console.log(typeof task.taskPoints)
   console.log(typeof URLpoints)
-  const URL = `https://776b-213-86-144-42.ngrok.io/exectask/${URLpoints}`
+  const URL = `https://a4fa-213-86-144-42.ngrok.io/exectask/${URLpoints}`
   console.log(URLpoints, "those are points")
   console.log(typeof URLpoints)
 
