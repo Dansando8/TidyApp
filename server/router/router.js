@@ -9,7 +9,8 @@ const {
   postTask,
   findTasks,
   findAndDeleteTaskByID,
-  findTaskByID, 
+  findTaskByID,
+  createNewUser,  
 } = require('../controllers/controllers.js')
 
 
@@ -50,6 +51,10 @@ router.delete('/tasks/:taskId', findAndDeleteTaskByID);
 //Find Task by ID
 
 router.get('/tasks/:taskId', findTaskByID)
+
+//Create a user 
+
+router.post('/users', createNewUser)
 
 
 module.exports = router; 

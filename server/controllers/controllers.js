@@ -1,5 +1,6 @@
 const  Reward = require('../models/RewardSchema.js')
 const Task = require('../models/TaskSchema.js')
+const User = require('../models/UserSchema.js')
 
 //Post one reward 
 
@@ -101,7 +102,7 @@ const findAndDeleteTaskByID = async(req, res) => {
   }
 }
 
-//Find a task bi ID 
+//Find a task by ID 
 
 const findTaskByID = async(req, res) =>  {
   try {
@@ -114,6 +115,19 @@ const findTaskByID = async(req, res) =>  {
   }
 }
 
+//-------> USERS <-----------//
+
+const createNewUser = async(req, res) => {
+  try {
+    const user = await User.create(req.body); 
+    res.send(user).status(200)
+  } catch (error) {
+    console.log(error);
+    res.send(error).status(500);
+  }
+}
+
+
 module.exports = { 
   postReward, 
   findRewards, 
@@ -123,5 +137,6 @@ module.exports = {
   postTask, 
   findTasks, 
   findAndDeleteTaskByID,
-  findTaskByID, 
+  findTaskByID,
+  createNewUser 
 }
