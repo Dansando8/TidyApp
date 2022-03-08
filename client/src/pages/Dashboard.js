@@ -4,17 +4,23 @@ import apiService from '../apiService'
 import Rewards from './Rewards'
 import Tasks from './Tasks'
 import TaskForm from './TaskForm'
+import Profile from './Profile'
+import { useParams } from 'react-router-dom'
 
 
 function Dashboard() {
-  console.log('Dashboard()')
+
+  const { id } = useParams(); 
+  console.log(id, "this is the Id as Params FROM DASHBOARD");
+  const userId = localStorage.getItem('userId')
+  console.log(userId, 'USER ID') 
+ 
   const[rewards, setRewards] = useState([])
-  console.log(rewards, " REWARDS")
   
   //Get reward list from the database
   useEffect(() => {
     const GetRewardList = async() => {
-      const rewardList = await apiService.getRewards()
+      const rewardList = await apiService.getRewards(userId)
       setRewards(rewardList); 
     }
     GetRewardList();
@@ -76,11 +82,17 @@ tasks.sort((a,b)=> a.taskPoints - b.taskPoints);
 
   return (
     <div>
-      <div>
+        <Profile></Profile>
+    <div className='top-dashboard'>
+    <div className='new-reward-form'>
+        <h1>Create a new reward</h1>
         <NewRewardForm updateRewards={updateRewards}></NewRewardForm>
+    </div >
+      <div>
+        <Rewards rewards={rewards} ></Rewards>
       </div>
+    </div>
     <div>
-      <Rewards rewards={rewards} ></Rewards>
       <TaskForm updateTasks={updateTasks}></TaskForm>
       <Tasks tasks={tasks} ></Tasks>
       </div>

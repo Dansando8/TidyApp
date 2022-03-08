@@ -47,7 +47,7 @@ function Login() {
         setState(userInitState);
       } else {
       console.log('loged in!')
-      navigate('/dashboard')
+      navigate(`/dashboard/${localStorage.getItem('userId')}`)
       }
     }
 

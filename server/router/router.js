@@ -24,7 +24,7 @@ router.post('/rewards', postReward);
 
 //Get all rewards
 
-router.get('/rewards', findRewards);
+router.post('/getrewards', findRewards);
 
 //Find a reward by Id
 
@@ -69,6 +69,6 @@ router.post('/users', createNewUser)
 router.post('/login', userLogin)
 
 //Profile info
-router.get('/users', findProfile)
+router.post('/profile', findProfile)
 
 module.exports = router; 

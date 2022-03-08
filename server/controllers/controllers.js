@@ -20,11 +20,12 @@ const postReward = async (req, res) => {
 
 const findRewards = async (req, res) => {
   try {
-    const rewards = await Reward.find({}); 
-    res.send(rewards).status(200)
+    const { id } = req.body
+    const rewards = await Reward.find({userId: id})
+    res.send(rewards)
   } catch (error) {
-    console.log(error)
     res.send(error).status(500)
+    console.log(error)
   }
 }
 
@@ -165,10 +166,12 @@ const userLogin = async(req, res) => {
 
 const findProfile = async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.body });
-    res.status(200).send(user);
-  } catch {
-    res.status(404).send({ error, message: 'User not found' });
+    const { id } = req.body
+    const user = await User.findOne({_id: id})
+    res.send(user)
+  } catch (error) {
+    res.send(error).status(500)
+    console.log(error)
   }
 };
 

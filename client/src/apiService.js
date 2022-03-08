@@ -33,12 +33,19 @@ apiService.uploadImage = async (files) => {
   }
 }
 
-apiService.getRewards = async () => {
+apiService.getRewards = async (id) => {
   try {
-    const data = await fetch(`${BASE_URL}rewards`)
-    return await data.json()
+    const res = await fetch(`${BASE_URL}getrewards`, {
+      method: 'POST', 
+      credentials: 'include', 
+      mode: 'cors', 
+      headers: {'Content-Type':'application/json'}, 
+      body: JSON.stringify({id}),
+    })
+    const data = await res.json();
+    return data; 
   } catch (error) {
-    console.log(error)
+    console.log(error); 
   }
 }
 
@@ -175,18 +182,19 @@ apiService.userLogin = async (user) =>{
 
 //Profile 
 
-apiService.getProfile = async (userId) => {
+apiService.getProfile = async (id) => {
   try {
-      const data =fetch(`${BASE_URL}users`, {
-      method: 'GET',
-      credentials: 'include',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userId)
+    const res = await fetch(`${BASE_URL}profile`, {
+      method: 'POST', 
+      credentials: 'include', 
+      mode: 'cors', 
+      headers: {'Content-Type':'application/json'}, 
+      body: JSON.stringify({id}),
     })
-    return data.json()
+    const data = await res.json();
+    return data; 
   } catch (error) {
-    console.log(error)
+    console.log(error); 
   }
 };
 

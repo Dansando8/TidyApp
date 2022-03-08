@@ -35,7 +35,6 @@ function NewRewardForm({updateRewards}) {
       e.preventDefault()
 
       const userId = localStorage.getItem('userId')
-      console.log(userId, 'from the New re from')
       const files = document.querySelector('input[name="imageUrl"]').files
       const imageUrl = await apiService.uploadImage(files); 
   
@@ -56,7 +55,7 @@ function NewRewardForm({updateRewards}) {
 
   return (
     
-    <div className='new-reward-form'>
+    <div>
 <Form onSubmit={handleSubmit}>
   <Form.Group  className="mb-3" controlId="formBasicEmail">
     <Form.Label>Reward name</Form.Label>

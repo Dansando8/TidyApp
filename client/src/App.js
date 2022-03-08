@@ -27,7 +27,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/dashboard' element={<Dashboard></Dashboard>} />
+          <Route path='/dashboard/:id' element={<Dashboard></Dashboard>} />
           <Route path='/reward/:id' element={<Reward></Reward>}></Route>
           <Route path='/tasks' element={<Tasks></Tasks>}></Route>
           <Route path='/tasks/:id' element={<Task></Task>}></Route>
@@ -36,7 +36,7 @@ function App() {
           <Route path='/register' element={<Register></Register>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/*' element={<PageNotFound></PageNotFound>}></Route>
-          <Route path='/profile' element={<Profile></Profile>}></Route>
+          <Route path='/profile/:id' element={<Profile></Profile>}></Route>
         </Routes>
       </BrowserRouter>
       </div>
