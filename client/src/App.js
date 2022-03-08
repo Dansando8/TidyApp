@@ -28,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/dashboard/:id' element={<Dashboard></Dashboard>} />
+          <Route path='/dashboard/null' element={<HomePage></HomePage>} />
           <Route path='/reward/:id' element={<Reward></Reward>}></Route>
           <Route path='/tasks' element={<Tasks></Tasks>}></Route>
           <Route path='/tasks/:id' element={<Task></Task>}></Route>

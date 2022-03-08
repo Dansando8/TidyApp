@@ -6,7 +6,7 @@ import moment from 'moment'
 import {LinkContainer} from 'react-router-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-function Reward( ) {
+function Reward() {
 
   const navigate = useNavigate()
 
@@ -41,10 +41,15 @@ function Reward( ) {
 
   const handleSubmit = async (e) => {  
     e.preventDefault()
+
+    const updatedRemPoints = state.points + state.accumulatedPoints;
+    console.log(updatedRemPoints)
+
     const updateReward = {
       reward: state.reward,
       points: state.points,
       imageUrl: state.imageUrl,
+      remainingPoints: updatedRemPoints,
       date: state.date
     }
     apiService.findAndUpdateRewardByID(id, updateReward); 
@@ -53,11 +58,11 @@ function Reward( ) {
     } else setUpdated(false)
   }
 
-  const handleImageUpdate = async (e) => {
+  const handleImageUpdate = async (e, rear) => {
     e.preventDefault()
     const files = document.querySelector('input[name="imageUrl"]').files
     const imageUrl = await apiService.uploadImage(files); 
-
+    
     const updatedInfo = {
       reward: state.reward,
       points: state.points,
@@ -76,6 +81,8 @@ function Reward( ) {
     }
     navigate('/dashboard')
   }
+
+  const userId = localStorage.getItem('userId')
   
   return (
     <div>
@@ -83,7 +90,6 @@ function Reward( ) {
     <Card style={{borderRadius:'2px', margin:"20px", width: '18rem', height:'30rem' }}>
       <Card.Img src={state.imageUrl} style={{ objectFit: 'cover', padding:'10px', width:'18rem', height:'18rem' }}></Card.Img>
         <Card.Body>
-          <ProgressBar striped variant="warning" now={60} syle={{ padding:"10px"}}/>
           <Card.Title style={{ marginTop:'10px' }} ><h1>{state.reward}</h1></Card.Title>
           <Card.Text style={{ marginTop:'0px' }}>{moment(state.date).format("YYYY-MM-DD-kk:mm")}</Card.Text>
           <Card.Text style={{ margin:'0px' }}>POINTS : {state.points}</Card.Text>
@@ -116,7 +122,7 @@ function Reward( ) {
       <Button variant="primary"  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', marginLeft:'10px'}} onClick={handleDelete}>DELETE REWARD</Button> 
 
     
-    <LinkContainer to={`/dashboard`} style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
+    <LinkContainer to={`/dashboard/${userId}`} style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
         <Button>Dashboard</Button>
     </LinkContainer>
 

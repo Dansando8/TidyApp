@@ -10,11 +10,10 @@ import { useParams } from 'react-router-dom'
 
 function Dashboard() {
 
-  const { id } = useParams(); 
-  console.log(id, "this is the Id as Params FROM DASHBOARD");
+  
   const userId = localStorage.getItem('userId')
-  console.log(userId, 'USER ID') 
- 
+  const userName = localStorage.getItem('userName')
+
   const[rewards, setRewards] = useState([])
   
   //Get reward list from the database
@@ -91,19 +90,28 @@ const findRemainingPoints = async (taskPoints) => {
     GetTaskList();
 }
 
+const logOut = () => {
+  localStorage.removeItem("userId");
+}
+
   return (
     <div>
-        <Profile></Profile>
+        <Profile logOut={logOut}></Profile>
+        <hr style={{margin:'20px', marginTop:'50px'}}></hr>
     <div className='top-dashboard'>
     <div className='new-reward-form'>
-        <h1>Create a new reward</h1>
+        <h1>Create a new reward for {userName}</h1>
         <NewRewardForm updateRewards={updateRewards}></NewRewardForm>
     </div >
-      <div>
+      <hr style={{margin:'20px', marginTop:'30px', marginBottom:'30px'}}></hr>
+      <div >
+      <h1 >REWARDS</h1>
         <Rewards rewards={rewards} ></Rewards>
       </div>
+      <hr style={{margin:'20px', marginTop:'50px'}}></hr>
     </div>
-    <div>
+    <div >
+        <h1 style={{margin:'20px', marginTop:'50px'}}>TASKS & ACTIVITIES</h1>
       <TaskForm updateTasks={updateTasks}></TaskForm>
       <Tasks tasks={tasks} findRemainingPoints={findRemainingPoints} ></Tasks>
       </div>

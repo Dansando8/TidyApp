@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import apiService from '../apiService'
+import { IoMdLogOut } from 'react-icons/io'
 
-function Profile() {
- 
+function Profile({logOut}) {
+
+
 
 const [state, setState] = useState({}) 
 
 useEffect(() => {
   const getProfileInfo = async () =>{
     const userId = localStorage.getItem('userId')
-    console.log(userId, "this userId from Profile")
-    console.log(typeof userId, "TYPE OF USERID")
-    
     const profile = await apiService.getProfile(userId) 
     await setState(profile)
     return profile
@@ -20,12 +19,14 @@ useEffect(() => {
   
 }, []);
 
+localStorage.setItem('userName', state.userName);
+
   return (
 <div >
-<img src={state.profilePictureURL} alt={state.userName} style={{borderRadius: '50%', maxWidth:'6rem', margin:'20px'}}  ></img>
+<img src={state.profilePictureURL} alt={state.userName} style={{borderRadius: '50%', maxWidth:'10rem', margin:'20px', padding:'5px', border:'solid 1px #cecece'}}  ></img>
 <div >
-<h1 id='profile-name'>{state.userName} </h1>
-<p>{state.email}</p>
+<h1 id='profile-name'>Welcome to {state.userName}'s dashboard </h1>
+<a href='/' onClick={logOut} style={{color:"#ffc109"}}>logout <IoMdLogOut></IoMdLogOut></a>
 </div>
 </div>
   )

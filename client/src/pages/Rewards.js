@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Card, Button, ProgressBar}from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import moment from 'moment'
@@ -9,9 +9,6 @@ function Rewards({rewards}) {
 
   return (
     <div>
-
-    <h1>REWARDS</h1>
-     
     <div className="reward-container">
     {rewards.map((reward) =>{ 
       //Updating the progress bar, move to helpers eventually
@@ -23,7 +20,7 @@ function Rewards({rewards}) {
       updateProgressBar(); 
 
       return(  
-        <div key = {reward._id}>
+        <div key = {reward._id} style={{marginTop:'50px'}}>
           <Card style={{borderRadius:'2px', margin:"20px", width: '18rem', height:'36rem' }}>
             <Card.Img src={reward.imageUrl} style={{objectFit: 'cover',  padding:'10px', width:'18rem', height:'17rem' }}></Card.Img>
               <Card.Body>
@@ -37,7 +34,7 @@ function Rewards({rewards}) {
                 <Card.Text style={{ margin:'0px' }}>Remaining points: {reward.remainingPoints}</Card.Text>
                 <Card.Text style={{ margin:'0px' }}>Obtained points: {reward.accumulatedPoints}</Card.Text>
                 <LinkContainer to={`/reward/${reward._id}`} component={<Reward></Reward>}  style={{borderRadius:'2px', border:'none', backgroundColor:'grey', margin:'10px 10px' }}>
-                  <Button>MODIFY</Button>
+                  <Button >MODIFY</Button>
                 </LinkContainer>
           </Card>
         </div>

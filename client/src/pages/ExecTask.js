@@ -30,6 +30,7 @@ function ExecTask() {
 
     const findRemainingPoints = async (taskPoints) => {
       rewards.forEach(reward => {
+        if(reward.remainingPoints !==0 ){
         let pointsToGoal = reward.remainingPoints - (taskPoints);
         console.log(pointsToGoal, 'points to goal')
         let reachedPoints = reward.accumulatedPoints + (taskPoints); 
@@ -39,6 +40,7 @@ function ExecTask() {
         await apiService.findAndUpdateRewardByID(reward._id, {remainingPoints: pointsToGoal, accumulatedPoints: reachedPoints,} ); 
         }
         updatePoints();
+      }
       });
     }
 

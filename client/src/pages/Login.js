@@ -1,14 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Card, Form, Button} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
 import apiService from '../apiService';
 import Register from './Register';
 import { BiHappyBeaming } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
-import { createGlobalState } from 'react-hooks-global-state';
-
-// const initialState = ''; 
-// const { useGlobalState } = createGlobalState(initialState)
 
 const userInitState = {
   email: '', 
@@ -58,8 +54,8 @@ function Login() {
   return (
     <div>
     <Card  style={{borderRadius:'5px', margin:"20px", width: '30rem', height:'24rem' }}>
+    <h1 style={{marginTop:"20px", marginBottom:'20px', marginTop:'20px'}}>Glad to see you back <BiHappyBeaming/></h1>
       <Card.Body>
-        <h1 style={{marginTop:"20px", marginBottom:'40px'}}>Glad to see you back <BiHappyBeaming/></h1>
         <Form onSubmit={handleSubmit}>
 
           <Form.Group  className="mb-3" controlId="formBasicEmail">
@@ -78,7 +74,7 @@ function Login() {
         </Form>
       </Card.Body>
         <LinkContainer to={`/register`} component={<Register> </Register>}>
-          <p>You are new ? <a href={"/register"}>Open an account</a></p>
+          <p>You are new ? <a href={"/register"} style={{color:"#ffc109"}}>Open an account</a></p>
           
         </LinkContainer>
     </Card>
