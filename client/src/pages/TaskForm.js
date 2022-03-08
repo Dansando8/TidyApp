@@ -24,11 +24,14 @@ function TaskForm({updateTasks}) {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
 
+    const userId = localStorage.getItem('userId')
+
     const newTask = {
       taskName: state.taskName, 
       taskPoints: state.taskPoints,
-      userId: "adcd",  
+      userId: userId,  
     }
+    
     const savedTask = await apiService.postTask(newTask)
     console.log(savedTask, 'SAVED TASK')
       updateTasks(savedTask)

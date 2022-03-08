@@ -34,10 +34,13 @@ function NewRewardForm({updateRewards}) {
       
       e.preventDefault()
 
+      const userId = localStorage.getItem('userId')
+      console.log(userId, 'from the New re from')
       const files = document.querySelector('input[name="imageUrl"]').files
       const imageUrl = await apiService.uploadImage(files); 
   
       const newReward = {
+        userId: userId,
         reward: state.reward,
         points: state.points,
         remainingPoints: state.points,

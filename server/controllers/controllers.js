@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 //Post one reward 
 
 const postReward = async (req, res) => {
+  console.log(req.session, 'Session User ID')
   try {
     const result = await Reward.create(req.body); 
     res.send(result).status(200)
@@ -150,7 +151,8 @@ const userLogin = async(req, res) => {
     const validatedPassword = await bcrypt.compare(password, user.password);
     console.log(validatedPassword, password); 
     if(!validatedPassword) throw new Error(); 
-    req.session.uid = user._id;
+    req.session.uid = user._id.toString();
+    console.log(req.session, "REQ SESSION from controller")
     res.status(200).send(user);
   } catch (error) {
     res
@@ -158,6 +160,17 @@ const userLogin = async(req, res) => {
       .send({error, message: 'Username or password incorrect'})
   }
 }
+
+//Finding  profile info
+
+const findProfile = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.body });
+    res.status(200).send(user);
+  } catch {
+    res.status(404).send({ error, message: 'User not found' });
+  }
+};
 
 module.exports = { 
   postReward, 
@@ -170,5 +183,6 @@ module.exports = {
   findAndDeleteTaskByID,
   findTaskByID,
   createNewUser, 
-  userLogin
+  userLogin,
+  findProfile
 }

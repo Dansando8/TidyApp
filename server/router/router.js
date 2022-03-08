@@ -12,8 +12,11 @@ const {
   findTaskByID,
   createNewUser,  
   userLogin,
+  findProfile
 } = require('../controllers/controllers.js')
 
+
+//-----> REWARDS <-------//
 
 //Post a new Reward
 
@@ -35,6 +38,8 @@ router.patch('/rewards/:rewardId', findAndUpdateRewardByID);
 
 router.delete('/rewards/:rewardId', findAndDeleteRewardByID)
 
+
+
 //-----> TASKS <-------//
 
 //Post a new Task 
@@ -53,11 +58,17 @@ router.delete('/tasks/:taskId', findAndDeleteTaskByID);
 
 router.get('/tasks/:taskId', findTaskByID)
 
+
+//-----> USERS <-------//
+
 //Create a user 
 
 router.post('/users', createNewUser)
 
 //Login 
 router.post('/login', userLogin)
+
+//Profile info
+router.get('/users', findProfile)
 
 module.exports = router; 

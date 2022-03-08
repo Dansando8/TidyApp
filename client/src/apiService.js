@@ -110,9 +110,7 @@ apiService.findTasks = async(id) => {
 apiService.findTaskById = async(id) => {
   try {
     const data = await fetch(`${BASE_URL}tasks/${id}`); 
-    
     const taskFound = await data.json();
-    console.log(taskFound, "task found")
     return taskFound; 
   } catch (error) {
     console.log(error)
@@ -174,5 +172,22 @@ apiService.userLogin = async (user) =>{
     console.log(error); 
   }
 }
+
+//Profile 
+
+apiService.getProfile = async (userId) => {
+  try {
+      const data =fetch(`${BASE_URL}users`, {
+      method: 'GET',
+      credentials: 'include',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userId)
+    })
+    return data.json()
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export default apiService; 

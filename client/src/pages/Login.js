@@ -5,16 +5,22 @@ import apiService from '../apiService';
 import Register from './Register';
 import { BiHappyBeaming } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
+import { createGlobalState } from 'react-hooks-global-state';
+
+// const initialState = ''; 
+// const { useGlobalState } = createGlobalState(initialState)
 
 const userInitState = {
   email: '', 
   password: '', 
 }
+
 function Login() {
   const navigate = useNavigate();
 
   const [state, setState] = useState(userInitState);
-  
+  // const [sessionId, setSessionId] = useGlobalState(initialState);
+
     const handleChange = (e) => {
       const { name, value } = e.target;
       setState((prevState) => ({
@@ -33,7 +39,8 @@ function Login() {
       }
 
       const res = await apiService.userLogin(userInfo)
-      console.log(res, 'this is the handleSubmit'); 
+      console.log(res)
+      localStorage.setItem('userId', res._id)
 
       if (res.error){
         alert(`${res.message}`);
