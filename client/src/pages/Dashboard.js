@@ -38,8 +38,9 @@ const [tasks, setTasks] = useState([])
 
 useEffect(() =>{
   const GetTaskList = async() => {
-  const taskList = await apiService.findTasks()
-   setTasks(taskList)
+  const taskList = await apiService.findTasks(userId)
+  console.log(tasks)
+  setTasks(taskList)
   }
   GetTaskList(); 
 },[])

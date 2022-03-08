@@ -48,7 +48,7 @@ router.post('/tasks', postTask);
 
 //Find Tasks
 
-router.get('/tasks', findTasks); 
+router.post('/findtasks', findTasks); 
 
 //Delete Task by ID
 

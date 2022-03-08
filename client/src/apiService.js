@@ -104,11 +104,17 @@ apiService.postTask = async (newTask) => {
 //Find all tasks
 apiService.findTasks = async(id) => {
   try {
-    const data = await fetch(`${BASE_URL}tasks`)
-    
-    return await data.json(); 
+    const res = await fetch(`${BASE_URL}findtasks`, {
+      method: 'POST', 
+      credentials: 'include', 
+      mode: 'cors', 
+      headers: {'Content-Type':'application/json'}, 
+      body: JSON.stringify({id}),
+    })
+    const data = await res.json();
+    return data; 
   } catch (error) {
-    console.log(error)
+    console.log(error); 
   }
 }
 

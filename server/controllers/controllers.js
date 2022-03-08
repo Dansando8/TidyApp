@@ -85,10 +85,13 @@ const postTask = async (req, res) => {
 
 const findTasks = async (req, res) => {
   try {
-    const result = await Task.find({})
-    res.send(result).status(200) 
+    const { id } = req.body
+    const tasks = await Task.find({userId: id})
+    console.log(tasks)
+    res.send(tasks)
   } catch (error) {
     res.send(error).status(500)
+    console.log(error)
   }
 }
 
