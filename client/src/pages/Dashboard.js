@@ -59,27 +59,37 @@ rewards.sort((a,b)=> a.points - b.points);
 tasks.sort((a,b)=> a.taskPoints - b.taskPoints); 
 
 //Updating points and progress bar when a task is done 
-// const [taskPoints, setTaskPoints] = useState(); 
+const [taskPoints, setTaskPoints] = useState(); 
 
-// const findRemainingPoints = async (taskPoints) => {
-//   function setTaskTest(taskPoints){
-//     setTaskPoints(taskPoints)
-//   }
+const findRemainingPoints = async (taskPoints) => {
+  function setTaskTest(taskPoints){
+    setTaskPoints(taskPoints)
+  }
   
-//   rewards.forEach(reward => {
-//     let pointsToGoal = reward.remainingPoints + (taskPoints);
-    
-//     const updatePoints = async() =>{
-//       await apiService.findAndUpdateRewardByID(reward._id, {remainingPoints: pointsToGoal}); 
-//     }
-//     updatePoints();
-//   });
-//     const GetTaskList = async() => {
-//       const updatedRewards = await apiService.getRewards()
-//       setRewards(updatedRewards)
-//     }
-//     GetTaskList();
-// }
+  console.log(taskPoints, 'TASK POINTS')
+
+  rewards.forEach(reward => {
+    console.log(reward)
+    if (reward.remainingPoints !== 0){
+      let pointsToGoal = reward.remainingPoints - (taskPoints);
+      let obtainedPoints = reward.accumulatedPoints + (taskPoints); 
+   
+    const updatePoints = async() =>{
+      await apiService.findAndUpdateRewardByID(reward._id, {
+        remainingPoints: pointsToGoal, 
+        accumulatedPoints: obtainedPoints, 
+      });
+      console.log(reward._id, 'REWARDS ID') 
+    }
+    updatePoints();
+  }
+  });
+    const GetTaskList = async() => {
+      const updatedRewards = await apiService.getRewards(userId)
+      setRewards(updatedRewards)
+    }
+    GetTaskList();
+}
 
   return (
     <div>
@@ -95,7 +105,7 @@ tasks.sort((a,b)=> a.taskPoints - b.taskPoints);
     </div>
     <div>
       <TaskForm updateTasks={updateTasks}></TaskForm>
-      <Tasks tasks={tasks} ></Tasks>
+      <Tasks tasks={tasks} findRemainingPoints={findRemainingPoints} ></Tasks>
       </div>
     </div>
   )

@@ -13,12 +13,14 @@ function ExecTask() {
   
   // findRemainingPoints(pointsNumber);
 
+  const userId = localStorage.getItem('userId')
+
   const [rewards, setRewards] = useState({})
 
   useEffect( ()  => {
 
       const GetRewardList = async() => {
-        const rewardList = await apiService.getRewards()
+        const rewardList = await apiService.getRewards(userId)
         setRewards(rewardList); 
       }
       GetRewardList()
