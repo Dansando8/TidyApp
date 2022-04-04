@@ -4,13 +4,9 @@
 <img src="client/src/assets/logo.png" width="200px">
 </p>
 
-
-
-# TidyApp
-
 TidyApp is a Web application that helps parents to teach good habits to their children through gamification. Parents can create different tasks and print QR codes. When the children scan the QR codes, the can accumulate points and retrieve rewards. 
 
-## Screenshots
+# Screenshots
 <p align="center">
 <img src="client/src/assets/TidyApp-computer-mock.jpg" width="800px">
 </p>
