@@ -1,7 +1,10 @@
 
+
 <p align="center">
-<img src="../../client/src/assets/logo.png" width="200px">
+<img src="" width="200px">
 </p>
+
+<img src="client/src/assets/logo.png" width="200px">
 
 # TidyApp
 
@@ -9,7 +12,7 @@ TidyApp is a Web application that helps parents to teach good habits to their ch
 
 ## Screenshots
 <p align="center">
-<img src="../../client/src/assets/TidyApp-computer-mock.jpg" width="200px">
+<img src="client/src/assets/TidyApp-computer-mock.jpg" width="200px">
 </p>
 
 ## Getting Started 
