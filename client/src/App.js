@@ -18,12 +18,13 @@ import Profile from './pages/Profile';
 
 
 
+
 function App() {
   return (
     
     
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar className="sticky-nav"></NavBar>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />

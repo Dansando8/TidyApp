@@ -3,6 +3,7 @@
 body{
   font-family: 'Barlow' !important;
   width: 100vw;
+  padding-top: 80px; 
 }
 
 .reward-container {
@@ -86,3 +87,29 @@ new-reward-container{
 .profile-description{
   justify-content: left;
 }
+
+#task-done{
+  margin-top: 50px; 
+  font-size: 3rem !important;
+  width: 50%; 
+}
+
+#task-done-message{
+  font-family: 'Limelight';
+  font-size: 2rem !important;
+}
+
+.task-done-container{
+  display: flex; 
+  flex-direction:column;
+  align-items: center; 
+}
+
+#check-circle-done{
+  color: greenyellow; 
+}
+
+.fixed-top {
+  background-color:#eeeeeec2;
+}
+

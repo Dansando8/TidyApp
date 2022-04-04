@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import apiService from '../apiService'
-import { Card, Button, ProgressBar, Form, Alert}from 'react-bootstrap'
+import { Card, Button, Form, Alert }from 'react-bootstrap'
 import moment from 'moment'
 import {LinkContainer} from 'react-router-bootstrap'
 import { useNavigate } from 'react-router-dom'
@@ -79,7 +79,7 @@ function Reward() {
     } catch (error) {
       console.log(error); 
     }
-    navigate('/dashboard')
+    navigate(`/dashboard/${userId}`)
   }
 
   const userId = localStorage.getItem('userId')
@@ -89,8 +89,8 @@ function Reward() {
     <div>
     <Card style={{borderRadius:'2px', margin:"20px", width: '18rem', height:'30rem' }}>
       <Card.Img src={state.imageUrl} style={{ objectFit: 'cover', padding:'10px', width:'18rem', height:'18rem' }}></Card.Img>
-        <Card.Body>
           <Card.Title style={{ marginTop:'10px' }} ><h1>{state.reward}</h1></Card.Title>
+        <Card.Body>
           <Card.Text style={{ marginTop:'0px' }}>{moment(state.date).format("YYYY-MM-DD-kk:mm")}</Card.Text>
           <Card.Text style={{ margin:'0px' }}>POINTS : {state.points}</Card.Text>
         </Card.Body>

@@ -69,7 +69,7 @@ const findRemainingPoints = async (taskPoints) => {
 
   rewards.forEach(reward => {
     console.log(reward)
-    if (reward.remainingPoints !== 0){
+    if (reward.remainingPoints > 0){
       let pointsToGoal = reward.remainingPoints - (taskPoints);
       let obtainedPoints = reward.accumulatedPoints + (taskPoints); 
    

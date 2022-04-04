@@ -58,7 +58,7 @@ function Register() {
 
           <Form.Group  className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>  
-            <Form.Control  name="password" type="text"  placeholder="Set your password" value ={state.password} onChange={handleChange} />
+            <Form.Control  name="password" type="password"  placeholder="Set your password" value ={state.password} onChange={handleChange} />
             <Form.Control  name="remainingPoints" type="hidden" value={state.points} onChange={handleChange} />
           </Form.Group>
           

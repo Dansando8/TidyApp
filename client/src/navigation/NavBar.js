@@ -6,8 +6,8 @@ function NavBar() {
   const userId = localStorage.getItem('userId')
   return (
     <div>
-  <Navbar bg="light" expand="lg">
-  <Container>
+  <Navbar className="fixed-top"  expand="lg" >
+  <Container >
     <Navbar.Brand ><img src={logo} style={{width:"15rem"}} alt="Logo"></img></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav"  className="order-md-1 order-0"/>
     <Navbar.Collapse id="basic-navbar-nav">
