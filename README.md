@@ -19,14 +19,22 @@ TidyApp is a Web application that helps parents to teach good habits to their ch
 
 1. Clone this repo.
 
-bash git clone https://github.com/rbrtrfl/linkup
+```bash git clone https://github.com/rbrtrfl/linkup```
     
 
 2. Install dependencies in root, server and client folders
 
-bash npm install
+```bash npm install```
 
 3. Install [MongoDB](https://www.mongodb.com/products/compass) Compas on your machine, start the program and connect the database 
+
+4. Start the client from client folder root
+
+```npm start```
+
+5. Start the server from server folder root
+
+```nodemon```
 
 ## Tech Stack
 * React
